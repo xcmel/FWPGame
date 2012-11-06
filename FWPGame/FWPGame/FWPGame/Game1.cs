@@ -20,8 +20,11 @@ namespace FWPGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         SpriteFont chiF;
+        Texture2D marsLand;
+        Texture2D marsOrbit;
         Vector2 FontPos;
         Vector2 FontOrigin;
+        Texture2D[][] gameMap = new Texture2D[6][6];
         String motd = "Hello Camco";
 
         public Game1()
@@ -52,6 +55,12 @@ namespace FWPGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             chiF = Content.Load<SpriteFont>("ChillerFont");
+            for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 6; j++) {
+                    gameMap[i][j] = Content.Load<Texture2D>("Maps/Mars/marsorbit-" + i + "-" + j);
+                }
+            }
+
             // TODO: use this.Content to load your game content here
 
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2,
