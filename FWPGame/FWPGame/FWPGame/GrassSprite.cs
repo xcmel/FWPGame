@@ -17,7 +17,6 @@ namespace FWPGame
 {
     public class GrassSprite : Sprite
     {
-        protected internal Vector2 myMapPosition;
         public GrassSprite(Texture2D texture, Vector2 position, Vector2 mapPosition) :
             base(texture, position)
         {
