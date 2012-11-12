@@ -17,15 +17,22 @@ namespace FWPGame
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        SpriteFont chiF;
-        Texture2D marsLand;
-        Texture2D marsOrbit;
-        Vector2 FontPos;
-        Vector2 FontOrigin;
-        Texture2D[][] gameMap = new Texture2D[6][6];
-        String motd = "Hello Camco";
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        private SpriteFont chiF;
+        private Texture2D marsLand;
+        private Texture2D marsOrbit;
+        private Vector2 FontPos;
+        private Vector2 FontOrigin;
+        private List<Sprite> mySprites;
+        private MapSprite[,] mapGrid = new MapSprite[6, 6];
+        private Map map;
+        private String motd = "Hello Camco";
+
+        private Player player;
+        private Cursor cursor;
+        private KeyboardState keyboardState;
+        private MouseState mouseState;
 
         public Game1()
         {
@@ -42,7 +49,6 @@ namespace FWPGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
@@ -57,9 +63,24 @@ namespace FWPGame
             chiF = Content.Load<SpriteFont>("ChillerFont");
             for (int i = 0; i < 6; i++) {
                 for (int j = 0; j < 6; j++) {
-                    gameMap[i][j] = Content.Load<Texture2D>("Maps/Mars/marsorbit-" + i + "-" + j);
+                    MapSprite ms = new MapSprite(Content.Load<Texture2D>("Maps/Mars/marsorbit-" + i + "-" + j),
+                        new Vector2(GraphicsDevice.Viewport.Width * i, GraphicsDevice.Viewport.Height * j),
+                        new Vector2(0, 0),
+                        new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height));
+                    mapGrid[i, j] = ms;
                 }
             }
+
+
+            cursor = new Cursor(null, new Vector2(0,0));
+            player = new Player(new Vector2(0, 0),
+                new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
+                new Vector2(GraphicsDevice.Viewport.Width * (mapGrid.Length / 6), GraphicsDevice.Viewport.Height * (mapGrid.Length / 6)),
+                cursor);
+
+            map = new Map(mapGrid,
+                new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
+                player);
 
             // TODO: use this.Content to load your game content here
 
@@ -88,8 +109,19 @@ namespace FWPGame
                 this.Exit();
 
             // TODO: Add your update logic here
+            HandleInput();
+
+            map.Update(gameTime, mouseState);
 
             base.Update(gameTime);
+        }
+
+        private void HandleInput()
+        {
+            // get the input states
+            mouseState = Mouse.GetState();
+
+
         }
 
         /// <summary>
@@ -102,10 +134,11 @@ namespace FWPGame
             spriteBatch.Begin();
             // TODO: Add your drawing code here
 
-            FontOrigin = chiF.MeasureString(motd) / 2;
+            //FontOrigin = chiF.MeasureString(motd) / 2;
 
-            spriteBatch.DrawString(chiF, motd, FontPos, Color.Yellow, 0, FontOrigin, 1.0f,
-                SpriteEffects.None, 0.5f);
+            map.Draw(player.myMapPosition, spriteBatch);
+            //spriteBatch.DrawString(chiF, motd, FontPos, Color.Yellow, 0, FontOrigin, 1.0f,
+            //   SpriteEffects.None, 0.5f);
 
             spriteBatch.End();
 

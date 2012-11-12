@@ -16,56 +16,41 @@ namespace FWPGame
 {
     public class MapSprite : Sprite
     {
-
-        protected internal Texture2D myTexture;
-        protected internal Vector2 myPosition;
-        protected internal Vector2 myVelocity = new Vector2(0, 0);
-        protected internal float myAngle = 0f;
-        protected internal float myAngularVelocity = 0f;
-        protected internal Vector2 myScreenSize = new Vector2(0, 0);
-        protected internal Vector2 myOrigin = new Vector2(0, 0);
-        protected internal Vector2 myScale = new Vector2(1, 1);
-        protected internal Vector2 myScaleVelocity = new Vector2(0, 0);
-        protected internal State myState;
-
-         // The base constructor.
-        public MapSprite(Texture2D texture, Vector2 position)
+        private Vector2 myScreenSize;
+        private Vector2 myMapPosition;
+        public MapSprite(Texture2D texture, Vector2 myMapPosition, Vector2 position, Vector2 screenSize) :
+            base(texture, position)
         {
-            myTexture = texture;
             myPosition = position;
+            myScreenSize = screenSize;
+            myScale.X = myScreenSize.X / texture.Width;
+            myScale.Y = myScreenSize.Y / texture.Height;
         }
 
-        // This method is virtual because it can be overridden by the subclasses.  
-        // In this method I will do the basic updating of my variables based on their
-        // velocities.
-        public virtual void Update(double elapsedTime)
+        public bool WithinBounds(Vector2 playerPosition)
         {
-            myPosition += myVelocity;
-            myAngle += myAngularVelocity;
-            myScale += myScaleVelocity;
-            // Let the state do its updating as well.
-            if (myState != null)
-            {
-                myState.Update(elapsedTime, this);
-            }
+            bool isInXBounds = ((playerPosition.X >= myMapPosition.X && playerPosition.X <= myMapPosition.X + myScreenSize.X)
+                || (playerPosition.X + myScreenSize.X >= myMapPosition.X && playerPosition.X + myScreenSize.X <= myMapPosition.X + myScreenSize.X));
+            bool isInYBounds = ((playerPosition.Y >= myMapPosition.Y && playerPosition.Y <= myMapPosition.Y + myScreenSize.Y)
+                || (playerPosition.Y + myScreenSize.Y >= myMapPosition.Y && playerPosition.Y + myScreenSize.Y <= myMapPosition.Y + myScreenSize.Y));
+
+            if (isInXBounds && isInYBounds)
+                return true;
+
+            return false;
         }
 
-        public virtual void Draw(SpriteBatch batch)
+        public void Update(Vector2 playerPosition)
         {
-            if (myState != null)
-            {
-                // How the sprite draws depends on the state the sprite is in.
-                myState.Draw(this, batch);
-            }
+            myPosition = myMapPosition - playerPosition;
         }
 
-        // This is a basic test for whether or not a sprite is off screen.
-        public bool OutOfBounds()
+        public override void Draw(SpriteBatch batch)
         {
-            return (myPosition.X + myTexture.Width > myScreenSize.X) ||
-                   (myPosition.X < 0) ||
-                   (myPosition.Y + myTexture.Height > myScreenSize.Y) ||
-                   (myPosition.Y < 0);
+            batch.Draw(myTexture, myPosition,
+                    null, Color.White,
+                    myAngle, myOrigin, myScale,
+                    SpriteEffects.None, 0f);
         }
     }
 }
