@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace FWPGame
 {
-    class Map
+    public class Map
     {
         private MapSprite[,] myMaps;
         private Vector2 myScreenSize;
@@ -28,13 +28,26 @@ namespace FWPGame
         /// <summary>
         /// Update the map's relative positions with the player's position
         /// </summary>
-        public void Update(GameTime gameTime, MouseState mState)
+        public void Update(GameTime gameTime, MouseState mState, KeyboardState kState)
+        {
+            myPlayer.Update(gameTime.ElapsedGameTime.TotalSeconds, kState, mState);
+
+            foreach (MapSprite ms in myMaps)
+            {
+                
+                
+                    ms.Update(myPlayer.myMapPosition);
+                
+            }
+        }
+
+        public void AddToMapSprite(Sprite s)
         {
             foreach (MapSprite ms in myMaps)
             {
-                if (ms.WithinBounds(myPlayer.myMapPosition))
+                if (ms.WithinBounds(s.myMapPosition))
                 {
-                    ms.Update(myPlayer.myMapPosition);
+                    ms.mySprites.Add(s);
                 }
             }
         }
@@ -56,5 +69,6 @@ namespace FWPGame
             }
 
         }
+
     }
 }

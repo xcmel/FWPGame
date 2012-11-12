@@ -26,10 +26,11 @@ namespace FWPGame
         private Vector2 FontOrigin;
         private List<Sprite> mySprites;
         private MapSprite[,] mapGrid = new MapSprite[6, 6];
-        private Map map;
+        public Map map;
         private String motd = "Hello Camco";
 
-        private Player player;
+        public GrassSprite myGrass;
+        public Player player;
         private Cursor cursor;
         private KeyboardState keyboardState;
         private MouseState mouseState;
@@ -37,6 +38,8 @@ namespace FWPGame
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 1080;
             Content.RootDirectory = "Content";
         }
 
@@ -71,11 +74,14 @@ namespace FWPGame
                 }
             }
 
-
-            cursor = new Cursor(null, new Vector2(0,0));
+            myGrass = new GrassSprite(Content.Load<Texture2D>("grass"),
+                new Vector2(0, 0),
+                new Vector2(0, 0));
+            cursor = new Cursor(Content.Load<Texture2D>("cursor"), new Vector2(0,0), this);
             player = new Player(new Vector2(0, 0),
                 new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
-                new Vector2(GraphicsDevice.Viewport.Width * (mapGrid.Length / 6), GraphicsDevice.Viewport.Height * (mapGrid.Length / 6)),
+                new Vector2((float)(GraphicsDevice.Viewport.Width * (float)(Math.Sqrt(mapGrid.Length))),
+                    ((float)GraphicsDevice.Viewport.Height * (float)(Math.Sqrt(mapGrid.Length)))),
                 cursor);
 
             map = new Map(mapGrid,
@@ -111,7 +117,8 @@ namespace FWPGame
             // TODO: Add your update logic here
             HandleInput();
 
-            map.Update(gameTime, mouseState);
+            cursor.Update(mouseState);
+            map.Update(gameTime, mouseState, keyboardState);
 
             base.Update(gameTime);
         }
@@ -120,9 +127,11 @@ namespace FWPGame
         {
             // get the input states
             mouseState = Mouse.GetState();
+            keyboardState = Keyboard.GetState();
 
 
         }
+
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -139,10 +148,11 @@ namespace FWPGame
             map.Draw(player.myMapPosition, spriteBatch);
             //spriteBatch.DrawString(chiF, motd, FontPos, Color.Yellow, 0, FontOrigin, 1.0f,
             //   SpriteEffects.None, 0.5f);
-
+            cursor.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
         }
+
     }
 }

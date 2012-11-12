@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cursor.cs" />
+    <Compile Include="GrassSprite.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="MapSprite.cs" />
     <Compile Include="Player.cs" />

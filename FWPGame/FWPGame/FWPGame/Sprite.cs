@@ -33,6 +33,7 @@ namespace FWPGame
         protected internal Vector2 myOrigin = new Vector2(0, 0);
         protected internal Vector2 myScale = new Vector2(1, 1);
         protected internal Vector2 myScaleVelocity = new Vector2(0, 0);
+        protected internal Vector2 myMapPosition = new Vector2(0, 0);
         protected internal State myState;
 
         // The base constructor.
@@ -55,6 +56,11 @@ namespace FWPGame
             {
                 myState.Update(elapsedTime, this);
             }
+        }
+
+        public virtual void Update(Vector2 pos)
+        {
+
         }
 
         public virtual void Draw(SpriteBatch batch)

@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 using System.Collections;
+using System.Diagnostics;
 
 namespace FWPGame
 {
@@ -18,10 +19,13 @@ namespace FWPGame
     {
         private Vector2 myScreenSize;
         private Vector2 myMapPosition;
-        public MapSprite(Texture2D texture, Vector2 myMapPosition, Vector2 position, Vector2 screenSize) :
+        protected internal List<Sprite> mySprites;
+        public MapSprite(Texture2D texture, Vector2 mapPosition, Vector2 position, Vector2 screenSize) :
             base(texture, position)
         {
+            mySprites = new List<Sprite>();
             myPosition = position;
+            myMapPosition = mapPosition;
             myScreenSize = screenSize;
             myScale.X = myScreenSize.X / texture.Width;
             myScale.Y = myScreenSize.Y / texture.Height;
@@ -35,7 +39,10 @@ namespace FWPGame
                 || (playerPosition.Y + myScreenSize.Y >= myMapPosition.Y && playerPosition.Y + myScreenSize.Y <= myMapPosition.Y + myScreenSize.Y));
 
             if (isInXBounds && isInYBounds)
+            {
+                //Debug.WriteLine("player position: " + playerPosition + ", map tile position: " + myMapPosition);
                 return true;
+            }
 
             return false;
         }
@@ -43,6 +50,10 @@ namespace FWPGame
         public void Update(Vector2 playerPosition)
         {
             myPosition = myMapPosition - playerPosition;
+            foreach (Sprite s in mySprites)
+            {
+                s.Update(playerPosition);
+            }
         }
 
         public override void Draw(SpriteBatch batch)
@@ -51,6 +62,13 @@ namespace FWPGame
                     null, Color.White,
                     myAngle, myOrigin, myScale,
                     SpriteEffects.None, 0f);
+            if (mySprites.Count > 0)
+            {
+                foreach (Sprite s in mySprites)
+                {
+                    s.Draw(batch);
+                }
+            }
         }
     }
 }

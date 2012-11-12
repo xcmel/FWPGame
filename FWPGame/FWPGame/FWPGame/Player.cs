@@ -6,10 +6,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
 namespace FWPGame
 {
-    class Player
+    public class Player
     {
         //screen position (relative)
         public Vector2 myPosition;
@@ -42,9 +44,10 @@ namespace FWPGame
             myMapPosition += myVelocity;
         }
 
-        public void Update(double elapsedTime)
+        public void Update(double elapsedTime, KeyboardState kState, MouseState mState)
         {
-            if (myMapPosition.X - myScreenSize.X <= 0)
+            myVelocity = new Vector2(0, 0);
+            if (myMapPosition.X <= 0)
             {
                 canGoLeft = false;
             }
@@ -60,7 +63,7 @@ namespace FWPGame
                 canGoRight = true;
             }
 
-            if (myMapPosition.Y - myScreenSize.Y <= 0)
+            if (myMapPosition.Y <= 0)
             {
                 canGoUp = false;
             } else {
@@ -73,6 +76,26 @@ namespace FWPGame
             } else {
                 canGoDown = true;
             }
+
+            if (kState.IsKeyDown(Keys.W) && canGoUp)
+            {
+                myVelocity.Y = -20;
+            }
+            else if (kState.IsKeyDown(Keys.S) && canGoDown)
+            {
+                myVelocity.Y = 20;
+            }
+
+            if (kState.IsKeyDown(Keys.A) && canGoLeft)
+            {
+                myVelocity.X = -20;
+            }
+            else if (kState.IsKeyDown(Keys.D) && canGoRight)
+            {
+                myVelocity.X = 20;
+            }
+
+            myMapPosition += myVelocity;
 
             int X = 0;
             int Y = 0;
