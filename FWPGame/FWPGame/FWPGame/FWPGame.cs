@@ -70,7 +70,7 @@ namespace FWPGame
                 tempMapSize,
                 cursor);
 
-            map = new Map(Content.Load<Texture2D>("Maps/Mars/marsorbit"),
+            map = new Map(Content.Load<Texture2D>("Maps/giantworldmap"),
                 new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
                 new Vector2(0, 0),
                 player);
