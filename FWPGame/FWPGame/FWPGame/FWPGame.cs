@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using FWPGame.Engine;
 
 namespace FWPGame
 {
@@ -20,13 +21,8 @@ namespace FWPGame
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private SpriteFont chiF;
-        private Texture2D marsLand;
-        private Texture2D marsOrbit;
         private Vector2 FontPos;
-        private Vector2 FontOrigin;
-        private List<Sprite> mySprites;
         public Map map;
-        private String motd = "Hello Camco";
 
         public GrassSprite myGrass;
         public Player player;
@@ -38,8 +34,8 @@ namespace FWPGame
         public FWPGame()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 640;
-            graphics.PreferredBackBufferHeight = 480;
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 600;
             Content.RootDirectory = "Content";
         }
 
@@ -82,7 +78,7 @@ namespace FWPGame
             // TODO: use this.Content to load your game content here
 
             // Create a Tree instance
-            Texture2D[] burnSequence = {
+            /*Texture2D[] burnSequence = {
                 Content.Load<Texture2D>("burning/burn_0"),
                 Content.Load<Texture2D>("burning/burn_1"),
                 Content.Load<Texture2D>("burning/burn_2"),
@@ -95,7 +91,7 @@ namespace FWPGame
                 Content.Load<Texture2D>("burning/burn_9")
             };
             Tree motherTree = new Tree(Content.Load<Texture2D>("tree"), new Vector2(0, 0), new Vector2(0, 0),
-                burnSequence, Content.Load<Texture2D>("burntTree"));
+                burnSequence, Content.Load<Texture2D>("burntTree"));*/
 
 
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2,
@@ -151,11 +147,8 @@ namespace FWPGame
             spriteBatch.Begin();
             // TODO: Add your drawing code here
 
-            //FontOrigin = chiF.MeasureString(motd) / 2;
 
             map.Draw(spriteBatch);
-            //spriteBatch.DrawString(chiF, motd, FontPos, Color.Yellow, 0, FontOrigin, 1.0f,
-            //   SpriteEffects.None, 0.5f);
             cursor.Draw(spriteBatch);
             spriteBatch.End();
 

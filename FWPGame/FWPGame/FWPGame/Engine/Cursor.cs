@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 
-namespace FWPGame
+namespace FWPGame.Engine
 {
     public class Cursor : Sprite
     {

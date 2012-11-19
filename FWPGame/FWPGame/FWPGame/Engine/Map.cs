@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using FWPGame.Engine;
 
-namespace FWPGame
+namespace FWPGame.Engine
 {
     public class Map
     {
@@ -25,6 +25,10 @@ namespace FWPGame
 
         public Map(Texture2D texture, Vector2 screenSize, Vector2 position, Player player)
         {
+            if (screenSize.X > texture.Width)
+            {
+                myScale = new Vector2(2, 2);
+            }
             myTexture = texture;
             myPosition = position;
             myScreenSize = screenSize;
