@@ -59,16 +59,16 @@ namespace FWPGame
         public void SetUpAnimate()
         {
             // Prepare the flip book sequence for expected Animate
-            myAnimate.AddFrame(0, 200);
-            myAnimate.AddFrame(1, 200);
-            myAnimate.AddFrame(2, 200);
-            myAnimate.AddFrame(3, 200);
-            myAnimate.AddFrame(4, 200);
-            myAnimate.AddFrame(5, 200);
-            myAnimate.AddFrame(6, 200);
-            myAnimate.AddFrame(7, 200);
-            myAnimate.AddFrame(8, 200);
-            myAnimate.AddFrame(9, 200);
+            myAnimate.AddFrame(0, 300);
+            myAnimate.AddFrame(1, 300);
+            myAnimate.AddFrame(2, 300);
+            myAnimate.AddFrame(3, 300);
+            myAnimate.AddFrame(4, 300);
+            myAnimate.AddFrame(5, 300);
+            myAnimate.AddFrame(6, 300);
+            myAnimate.AddFrame(7, 300);
+            myAnimate.AddFrame(8, 300);
+            myAnimate.AddFrame(9, 300);
         }
 
 
@@ -82,13 +82,13 @@ namespace FWPGame
                 tree = (Tree)sprite;
             }
 
-            public void Update(double elapsedTime, Sprite sprite, Vector2 playerMapPos)
+            public void Update(double elapsedTime, Vector2 playerMapPos)
             {
 
                 tree.myPosition = tree.myMapPosition - playerMapPos;
             }
 
-            public void Draw(Sprite sprite, SpriteBatch batch)
+            public void Draw(SpriteBatch batch)
             {
                 batch.Draw(tree.myTexture, tree.myPosition,
                         null, Color.White,
@@ -108,7 +108,7 @@ namespace FWPGame
                 tree = (Tree)sprite;
             }
 
-            public void Update(double elapsedTime, Sprite sprite, Vector2 playerMapPos)
+            public void Update(double elapsedTime, Vector2 playerMapPos)
             {
                 bool seqDone = false;
                 tree.myAnimate.Update(elapsedTime, ref seqDone);
@@ -118,7 +118,7 @@ namespace FWPGame
                 }
             }
 
-            public void Draw(Sprite sprite, SpriteBatch batch)
+            public void Draw(SpriteBatch batch)
             {
                 batch.Draw(tree.myAnimate.GetImage(), tree.myPosition, null, Color.White, tree.myAngle,
                         tree.myOrigin, tree.myScale,
@@ -136,11 +136,11 @@ namespace FWPGame
                 tree = (Tree)sprite;
             }
 
-            public void Update(double elapsedTime, Sprite sprite, Vector2 playerMapPos)
+            public void Update(double elapsedTime, Vector2 playerMapPos)
             {
             }
 
-            public void Draw(Sprite sprite, SpriteBatch batch)
+            public void Draw(SpriteBatch batch)
             {
                 batch.Draw(tree.myBurnt, tree.myPosition,
                     null, Color.White,

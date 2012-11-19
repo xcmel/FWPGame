@@ -16,7 +16,7 @@ namespace FWPGame
 {
     public interface State
     {
-        void Update(double elapsedTime, Sprite sprite, Vector2 playerMapPos);
-        void Draw(Sprite sprite, SpriteBatch batch);
+        void Update(double elapsedTime, Vector2 playerMapPos);
+        void Draw(SpriteBatch batch);
     }
 }

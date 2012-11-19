@@ -54,7 +54,7 @@ namespace FWPGame
             // Let the state do its updating as well.
             if (myState != null)
             {
-                myState.Update(elapsedTime, this, myMapPosition);
+                myState.Update(elapsedTime, myMapPosition);
             }
         }
 
@@ -64,7 +64,7 @@ namespace FWPGame
             // Let the state do its updating as well.
             if (myState != null)
             {
-                myState.Update(elapsedTime, this, myMapPosition);
+                myState.Update(elapsedTime, myMapPosition);
             }
         }
 
@@ -78,7 +78,7 @@ namespace FWPGame
             if (myState != null)
             {
                 // How the sprite draws depends on the state the sprite is in.
-                myState.Draw(this, batch);
+                myState.Draw(batch);
             }
         }
 

@@ -30,7 +30,7 @@ namespace FWPGame.Engine
             myPosition = myMapPosition - playerPosition;
             foreach (Sprite s in mySprites)
             {
-                s.Update(gameTime.ElapsedGameTime.TotalSeconds);
+                s.Update(gameTime.ElapsedGameTime.Milliseconds);
                 s.myPosition = myPosition;
             }
         }

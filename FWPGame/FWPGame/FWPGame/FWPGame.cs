@@ -31,6 +31,8 @@ namespace FWPGame
         private MouseState mouseState;
         private Vector2 tempMapSize = new Vector2(1200, 1200);
 
+        protected internal Tree motherTree;
+
         public FWPGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -70,7 +72,7 @@ namespace FWPGame
                 tempMapSize,
                 cursor);
 
-            map = new Map(Content.Load<Texture2D>("Maps/giantworldmap"),
+            map = new Map(Content.Load<Texture2D>("Maps/Mars/marsorbit"),
                 new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
                 new Vector2(0, 0),
                 player);
@@ -78,7 +80,7 @@ namespace FWPGame
             // TODO: use this.Content to load your game content here
 
             // Create a Tree instance
-            /*Texture2D[] burnSequence = {
+            Texture2D[] burnSequence = {
                 Content.Load<Texture2D>("burning/burn_0"),
                 Content.Load<Texture2D>("burning/burn_1"),
                 Content.Load<Texture2D>("burning/burn_2"),
@@ -90,8 +92,8 @@ namespace FWPGame
                 Content.Load<Texture2D>("burning/burn_8"),
                 Content.Load<Texture2D>("burning/burn_9")
             };
-            Tree motherTree = new Tree(Content.Load<Texture2D>("tree"), new Vector2(0, 0), new Vector2(0, 0),
-                burnSequence, Content.Load<Texture2D>("burntTree"));*/
+            motherTree = new Tree(Content.Load<Texture2D>("tree"), new Vector2(0, 0), new Vector2(0, 0),
+                burnSequence, Content.Load<Texture2D>("burntTree"));
 
 
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2,

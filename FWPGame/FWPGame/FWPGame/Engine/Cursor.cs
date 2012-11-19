@@ -14,6 +14,7 @@ namespace FWPGame.Engine
     public class Cursor : Sprite
     {
         private FWPGame myGame;
+        private Tree tree;
         public Cursor(Texture2D texture, Vector2 position, FWPGame game) :
             base(texture, position)
         {
@@ -27,11 +28,20 @@ namespace FWPGame.Engine
             myPosition.X = mState.X;
             myPosition.Y = mState.Y;
 
+
             myMapPosition = myGame.player.myMapPosition + myPosition;
 
             if (mState.LeftButton == ButtonState.Pressed)
             {
-                SpawnGrass(mState);
+                SpawnTree(mState);
+            }
+
+            if (mState.RightButton == ButtonState.Pressed)
+            {
+                if (tree != null)
+                {
+                    tree.burn();
+                }
             }
         }
 
@@ -45,6 +55,16 @@ namespace FWPGame.Engine
             grass.myMapPosition.Y = myGame.player.myMapPosition.Y + mState.Y;
             Debug.WriteLine("cursor grass map pos: " + myGame.player.myMapPosition);
             myGame.map.AddToMapTile(grass);
+        }
+
+        private void SpawnTree(MouseState mState)
+        {
+            tree = myGame.motherTree.Clone();
+            tree.myPosition.X = mState.X;
+            tree.myPosition.Y = mState.Y;
+            tree.myMapPosition.X = myGame.player.myMapPosition.X + mState.X;
+            tree.myMapPosition.Y = myGame.player.myMapPosition.Y + mState.Y;
+            myGame.map.AddToMapTile(tree);
         }
 
         public override void Draw(SpriteBatch batch)
