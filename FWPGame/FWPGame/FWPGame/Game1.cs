@@ -90,6 +90,23 @@ namespace FWPGame
 
             // TODO: use this.Content to load your game content here
 
+            // Create a Tree instance
+            Texture2D[] burnSequence = {
+                Content.Load<Texture2D>("burning/burn_0"),
+                Content.Load<Texture2D>("burning/burn_1"),
+                Content.Load<Texture2D>("burning/burn_2"),
+                Content.Load<Texture2D>("burning/burn_3"),
+                Content.Load<Texture2D>("burning/burn_4"),
+                Content.Load<Texture2D>("burning/burn_5"),
+                Content.Load<Texture2D>("burning/burn_6"),
+                Content.Load<Texture2D>("burning/burn_7"),
+                Content.Load<Texture2D>("burning/burn_8"),
+                Content.Load<Texture2D>("burning/burn_9")
+            };
+            Tree motherTree = new Tree(Content.Load<Texture2D>("tree"), new Vector2(0, 0), new Vector2(0, 0),
+                burnSequence, Content.Load<Texture2D>("burntTree"));
+
+
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2,
                 graphics.GraphicsDevice.Viewport.Height / 2);
         }

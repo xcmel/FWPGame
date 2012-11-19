@@ -54,7 +54,17 @@ namespace FWPGame
             // Let the state do its updating as well.
             if (myState != null)
             {
-                myState.Update(elapsedTime, this);
+                myState.Update(elapsedTime, this, myMapPosition);
+            }
+        }
+
+
+        public virtual void Update(double elapsedTime, Vector2 pos)
+        {
+            // Let the state do its updating as well.
+            if (myState != null)
+            {
+                myState.Update(elapsedTime, this, myMapPosition);
             }
         }
 
