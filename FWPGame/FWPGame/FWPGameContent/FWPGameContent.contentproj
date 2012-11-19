@@ -37,13 +37,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Maps\Mars\marsorbit.jpg">
-      <Name>marsorbit</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Maps\Mars\marslandscape.jpg">
       <Name>marslandscape</Name>
       <Importer>TextureImporter</Importer>
@@ -240,7 +233,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="grass.jpg">
+    <Compile Include="Maps\Mars\marsorbit.png">
+      <Name>marsorbit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="grass.png">
       <Name>grass</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>

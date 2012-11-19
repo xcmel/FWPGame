@@ -13,8 +13,8 @@ namespace FWPGame
 {
     public class Cursor : Sprite
     {
-        private Game1 myGame;
-        public Cursor(Texture2D texture, Vector2 position, Game1 game) :
+        private FWPGame myGame;
+        public Cursor(Texture2D texture, Vector2 position, FWPGame game) :
             base(texture, position)
         {
             myGame = game;
@@ -26,6 +26,8 @@ namespace FWPGame
         {
             myPosition.X = mState.X;
             myPosition.Y = mState.Y;
+
+            myMapPosition = myGame.player.myMapPosition + myPosition;
 
             if (mState.LeftButton == ButtonState.Pressed)
             {
@@ -42,7 +44,7 @@ namespace FWPGame
             grass.myMapPosition.X = myGame.player.myMapPosition.X + mState.X;
             grass.myMapPosition.Y = myGame.player.myMapPosition.Y + mState.Y;
             Debug.WriteLine("cursor grass map pos: " + myGame.player.myMapPosition);
-            myGame.map.AddToMapSprite(grass);
+            myGame.map.AddToMapTile(grass);
         }
 
         public override void Draw(SpriteBatch batch)

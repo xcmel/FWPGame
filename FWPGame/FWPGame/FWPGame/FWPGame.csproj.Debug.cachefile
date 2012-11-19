@@ -1,5 +1,4 @@
 Content\ChillerFont.xnb
-Content\Maps\Mars\marsorbit.xnb
 Content\Maps\Mars\marslandscape.xnb
 Content\Maps\Mars\marsorbit-0-0.xnb
 Content\Maps\Mars\marsorbit-0-1.xnb
@@ -38,6 +37,7 @@ Content\Maps\Mars\marsorbit-5-3.xnb
 Content\Maps\Mars\marsorbit-5-4.xnb
 Content\Maps\Mars\marsorbit-5-5.xnb
 Content\cursor.xnb
+Content\Maps\Mars\marsorbit.xnb
 Content\grass.xnb
 Content\fire.xnb
 Content\logs.xnb

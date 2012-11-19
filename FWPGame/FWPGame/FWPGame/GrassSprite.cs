@@ -42,7 +42,7 @@ namespace FWPGame
             return new GrassSprite(this.myTexture, new Vector2(0,0), new Vector2(0,0));
         }
 
-        public override void Update(Vector2 playerMapPos)
+        public override void Update(GameTime gameTime, Vector2 playerMapPos)
         {
             myPosition = myMapPosition - playerMapPos;
         }

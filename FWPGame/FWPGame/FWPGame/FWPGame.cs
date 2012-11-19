@@ -15,7 +15,7 @@ namespace FWPGame
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class FWPGame : Microsoft.Xna.Framework.Game
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -25,7 +25,6 @@ namespace FWPGame
         private Vector2 FontPos;
         private Vector2 FontOrigin;
         private List<Sprite> mySprites;
-        private MapSprite[,] mapGrid = new MapSprite[6, 6];
         public Map map;
         private String motd = "Hello Camco";
 
@@ -34,12 +33,13 @@ namespace FWPGame
         private Cursor cursor;
         private KeyboardState keyboardState;
         private MouseState mouseState;
+        private Vector2 tempMapSize = new Vector2(1200, 1200);
 
-        public Game1()
+        public FWPGame()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 1920;
-            graphics.PreferredBackBufferHeight = 1080;
+            graphics.PreferredBackBufferWidth = 640;
+            graphics.PreferredBackBufferHeight = 480;
             Content.RootDirectory = "Content";
         }
 
@@ -64,15 +64,6 @@ namespace FWPGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             chiF = Content.Load<SpriteFont>("ChillerFont");
-            for (int i = 0; i < 6; i++) {
-                for (int j = 0; j < 6; j++) {
-                    MapSprite ms = new MapSprite(Content.Load<Texture2D>("Maps/Mars/marsorbit-" + i + "-" + j),
-                        new Vector2(GraphicsDevice.Viewport.Width * i, GraphicsDevice.Viewport.Height * j),
-                        new Vector2(0, 0),
-                        new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height));
-                    mapGrid[i, j] = ms;
-                }
-            }
 
             myGrass = new GrassSprite(Content.Load<Texture2D>("grass"),
                 new Vector2(0, 0),
@@ -80,12 +71,12 @@ namespace FWPGame
             cursor = new Cursor(Content.Load<Texture2D>("cursor"), new Vector2(0,0), this);
             player = new Player(new Vector2(0, 0),
                 new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
-                new Vector2((float)(GraphicsDevice.Viewport.Width * (float)(Math.Sqrt(mapGrid.Length))),
-                    ((float)GraphicsDevice.Viewport.Height * (float)(Math.Sqrt(mapGrid.Length)))),
+                tempMapSize,
                 cursor);
 
-            map = new Map(mapGrid,
+            map = new Map(Content.Load<Texture2D>("Maps/Mars/marsorbit"),
                 new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
+                new Vector2(0, 0),
                 player);
 
             // TODO: use this.Content to load your game content here
@@ -162,7 +153,7 @@ namespace FWPGame
 
             //FontOrigin = chiF.MeasureString(motd) / 2;
 
-            map.Draw(player.myMapPosition, spriteBatch);
+            map.Draw(spriteBatch);
             //spriteBatch.DrawString(chiF, motd, FontPos, Color.Yellow, 0, FontOrigin, 1.0f,
             //   SpriteEffects.None, 0.5f);
             cursor.Draw(spriteBatch);

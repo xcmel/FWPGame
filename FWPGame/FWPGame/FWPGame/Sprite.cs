@@ -68,9 +68,9 @@ namespace FWPGame
             }
         }
 
-        public virtual void Update(Vector2 pos)
+        public virtual void Update(GameTime gameTime, Vector2 playerPosition)
         {
-
+            myPosition = myMapPosition - playerPosition;
         }
 
         public virtual void Draw(SpriteBatch batch)

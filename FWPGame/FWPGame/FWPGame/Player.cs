@@ -19,19 +19,41 @@ namespace FWPGame
         public Vector2 myMapPosition;
         private Vector2 myVelocity;
         private Vector2 myScreenSize;
-        private bool canGoUp;
-        private bool canGoLeft;
-        private bool canGoRight;
-        private bool canGoDown;
-        private Cursor myCursor;
-        private Vector2 myMapSize;
-        private State myState;
+        private bool canGoUp
+        {
+            get
+            {
+                return myMapPosition.Y <= 0 ? false : true;
+            }
+        }
+        private bool canGoLeft
+        {
+            get
+            {
+                return myMapPosition.X <= 0 ? false : true;
+            }
+        }
+        private bool canGoRight
+        {
+            get
+            {
+                return myMapPosition.X + myScreenSize.X >= myMapSize.X ? false : true;
+            }
+        }
+        private bool canGoDown
+        {
+            get
+            {
+                return myMapPosition.Y + myScreenSize.Y >= myMapSize.Y ? false : true;
+            }
+        }
 
-        public Player(Vector2 mapPos, Vector2 screenSize, 
+        protected internal Cursor myCursor;
+        private Vector2 myMapSize;
+
+        public Player(Vector2 mapPos, Vector2 screenSize,
             Vector2 mapSize, Cursor cursor)
         {
-            canGoUp = false;
-            canGoLeft = false;
             myMapPosition = mapPos;
             myMapSize = mapSize;
             myCursor = cursor;
@@ -39,90 +61,36 @@ namespace FWPGame
             myVelocity = new Vector2(0, 0);
         }
 
-        private void MovePlayer()
-        {
-            myMapPosition += myVelocity;
-        }
-
+        /// <summary>
+        /// First update the map position with the velocity.
+        /// Then poll input manager for a W,A,S,D keypress and check if mouse is in a "move" area. 
+        /// Based on this, set a new velocity
+        /// </summary>
+        /// <param name="elapsedTime"></param>
+        /// <param name="kState"></param>
+        /// <param name="mState"></param>
         public void Update(double elapsedTime, KeyboardState kState, MouseState mState)
         {
+            myMapPosition += myVelocity;
             myVelocity = new Vector2(0, 0);
-            if (myMapPosition.X <= 0)
-            {
-                canGoLeft = false;
-            }
-            else
-            {
-                canGoLeft = true;
-            }
 
-            if (myMapPosition.X + myScreenSize.X >= myMapSize.X)
-            {
-                canGoRight = false;
-            } else {
-                canGoRight = true;
-            }
-
-            if (myMapPosition.Y <= 0)
-            {
-                canGoUp = false;
-            } else {
-                canGoUp = true;
-            }
-
-            if (myMapPosition.Y + myScreenSize.Y >= myMapSize.Y)
-            {
-                canGoDown = false;
-            } else {
-                canGoDown = true;
-            }
-
-            if (kState.IsKeyDown(Keys.W) && canGoUp)
+            if ((kState.IsKeyDown(Keys.W) || myCursor.myPosition.Y <= 20) && canGoUp)
             {
                 myVelocity.Y = -20;
             }
-            else if (kState.IsKeyDown(Keys.S) && canGoDown)
+            else if ((kState.IsKeyDown(Keys.S) || myCursor.myPosition.Y >= (myScreenSize.Y - 20)) && canGoDown)
             {
                 myVelocity.Y = 20;
             }
-
-            if (kState.IsKeyDown(Keys.A) && canGoLeft)
+            if ((kState.IsKeyDown(Keys.A) || myCursor.myPosition.X <= 20) && canGoLeft)
             {
                 myVelocity.X = -20;
             }
-            else if (kState.IsKeyDown(Keys.D) && canGoRight)
+            else if ((kState.IsKeyDown(Keys.D) || myCursor.myPosition.X >= (myScreenSize.X - 20)) && canGoRight)
             {
                 myVelocity.X = 20;
             }
 
-            myMapPosition += myVelocity;
-
-            int X = 0;
-            int Y = 0;
-            bool move = false;
-            if (myCursor.myPosition.X <= 20 && canGoLeft)
-            {
-                X = -20;
-                move = true;
-            }
-            if (myCursor.myPosition.X >= (myScreenSize.X - 20) && canGoRight)
-            {
-                X = 20;
-                move = true;
-            }
-            if (myCursor.myPosition.Y <= 20 && canGoUp)
-            {
-                Y = -20;
-                move = true;
-            }
-            if (myCursor.myPosition.Y >= (myScreenSize.Y - 20) && canGoDown)
-            {
-                Y = 20;
-                move = true;
-            }
-                myVelocity = new Vector2(X, Y);
-                MovePlayer();
         }
-
     }
 }
