@@ -32,6 +32,7 @@ namespace FWPGame
         private Vector2 tempMapSize = new Vector2(1200, 1200);
 
         protected internal Tree motherTree;
+        protected internal House motherHouse;
 
         public FWPGame()
         {
@@ -80,7 +81,7 @@ namespace FWPGame
             // TODO: use this.Content to load your game content here
 
             // Create a Tree instance
-            Texture2D[] burnSequence = {
+            Texture2D[] burnTreeSequence = {
                 Content.Load<Texture2D>("burning/burn_0"),
                 Content.Load<Texture2D>("burning/burn_1"),
                 Content.Load<Texture2D>("burning/burn_2"),
@@ -93,8 +94,25 @@ namespace FWPGame
                 Content.Load<Texture2D>("burning/burn_9")
             };
             motherTree = new Tree(Content.Load<Texture2D>("tree"), new Vector2(0, 0), new Vector2(0, 0),
-                burnSequence, Content.Load<Texture2D>("burntTree"));
+                burnTreeSequence, Content.Load<Texture2D>("burntTree"));
 
+
+            // Create a House instance
+            Texture2D[] burnHouseSequence = {
+                Content.Load<Texture2D>("house/houseFire"),
+                Content.Load<Texture2D>("burning/burn_0"),
+                Content.Load<Texture2D>("burning/burn_1"),
+                Content.Load<Texture2D>("burning/burn_2"),
+                Content.Load<Texture2D>("burning/burn_3"),
+                Content.Load<Texture2D>("burning/burn_4"),
+                Content.Load<Texture2D>("burning/burn_5"),
+                Content.Load<Texture2D>("burning/burn_6"),
+                Content.Load<Texture2D>("burning/burn_7"),
+                Content.Load<Texture2D>("burning/burn_8"),
+                Content.Load<Texture2D>("burning/burn_9")
+            };
+            motherHouse = new House(Content.Load<Texture2D>("house/house"), new Vector2(0, 0), new Vector2(0, 0),
+                burnHouseSequence, Content.Load<Texture2D>("house/houseBurnt"));
 
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2,
                 graphics.GraphicsDevice.Viewport.Height / 2);

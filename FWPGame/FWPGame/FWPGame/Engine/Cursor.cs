@@ -15,6 +15,8 @@ namespace FWPGame.Engine
     {
         private FWPGame myGame;
         private Tree tree;
+        private House house;
+
         public Cursor(Texture2D texture, Vector2 position, FWPGame game) :
             base(texture, position)
         {
@@ -33,14 +35,14 @@ namespace FWPGame.Engine
 
             if (mState.LeftButton == ButtonState.Pressed)
             {
-                SpawnTree(mState);
+                SpawnHouse(mState);
             }
 
             if (mState.RightButton == ButtonState.Pressed)
             {
-                if (tree != null)
+                if (house != null)
                 {
-                    tree.burn();
+                    house.burn();
                 }
             }
         }
@@ -65,6 +67,16 @@ namespace FWPGame.Engine
             tree.myMapPosition.X = myGame.player.myMapPosition.X + mState.X;
             tree.myMapPosition.Y = myGame.player.myMapPosition.Y + mState.Y;
             myGame.map.AddToMapTile(tree);
+        }
+
+        private void SpawnHouse(MouseState mState)
+        {
+            house = myGame.motherHouse.Clone();
+            house.myPosition.X = mState.X;
+            house.myPosition.Y = mState.Y;
+            house.myMapPosition.X = myGame.player.myMapPosition.X + mState.X;
+            house.myMapPosition.Y = myGame.player.myMapPosition.Y + mState.Y;
+            myGame.map.AddToMapTile(house);
         }
 
         public override void Draw(SpriteBatch batch)
