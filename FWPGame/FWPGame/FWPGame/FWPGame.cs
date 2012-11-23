@@ -16,7 +16,7 @@ namespace FWPGame
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class FWPGame : Microsoft.Xna.Framework.Game
+    public partial class FWPGame : Microsoft.Xna.Framework.Game
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -31,14 +31,12 @@ namespace FWPGame
         private MouseState mouseState;
         private Vector2 tempMapSize = new Vector2(1200, 1200);
 
-        protected internal Tree motherTree;
-        protected internal House motherHouse;
 
         public FWPGame()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 800;
-            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferWidth = 1024;
+            graphics.PreferredBackBufferHeight = 768;
             Content.RootDirectory = "Content";
         }
 
@@ -79,40 +77,7 @@ namespace FWPGame
                 player);
 
             // TODO: use this.Content to load your game content here
-
-            // Create a Tree instance
-            Texture2D[] burnTreeSequence = {
-                Content.Load<Texture2D>("burning/burn_0"),
-                Content.Load<Texture2D>("burning/burn_1"),
-                Content.Load<Texture2D>("burning/burn_2"),
-                Content.Load<Texture2D>("burning/burn_3"),
-                Content.Load<Texture2D>("burning/burn_4"),
-                Content.Load<Texture2D>("burning/burn_5"),
-                Content.Load<Texture2D>("burning/burn_6"),
-                Content.Load<Texture2D>("burning/burn_7"),
-                Content.Load<Texture2D>("burning/burn_8"),
-                Content.Load<Texture2D>("burning/burn_9")
-            };
-            motherTree = new Tree(Content.Load<Texture2D>("tree"), new Vector2(0, 0), new Vector2(0, 0),
-                burnTreeSequence, Content.Load<Texture2D>("burntTree"));
-
-
-            // Create a House instance
-            Texture2D[] burnHouseSequence = {
-                Content.Load<Texture2D>("house/houseFire"),
-                Content.Load<Texture2D>("burning/burn_0"),
-                Content.Load<Texture2D>("burning/burn_1"),
-                Content.Load<Texture2D>("burning/burn_2"),
-                Content.Load<Texture2D>("burning/burn_3"),
-                Content.Load<Texture2D>("burning/burn_4"),
-                Content.Load<Texture2D>("burning/burn_5"),
-                Content.Load<Texture2D>("burning/burn_6"),
-                Content.Load<Texture2D>("burning/burn_7"),
-                Content.Load<Texture2D>("burning/burn_8"),
-                Content.Load<Texture2D>("burning/burn_9")
-            };
-            motherHouse = new House(Content.Load<Texture2D>("house/house"), new Vector2(0, 0), new Vector2(0, 0),
-                burnHouseSequence, Content.Load<Texture2D>("house/houseBurnt"));
+            LoadObjects();
 
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2,
                 graphics.GraphicsDevice.Viewport.Height / 2);

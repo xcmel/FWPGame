@@ -38,12 +38,9 @@ Content\Maps\Mars\marsorbit-5-4.xnb
 Content\Maps\Mars\marsorbit-5-5.xnb
 Content\cursor.xnb
 Content\fire.xnb
-Content\logs.xnb
 Content\water.xnb
 Content\clouds.xnb
 Content\fire-r.xnb
-Content\tree.xnb
-Content\burntTree.xnb
 Content\Burning\burn_0.xnb
 Content\Burning\burn_1.xnb
 Content\Burning\burn_2.xnb
@@ -60,3 +57,6 @@ Content\Maps\giantworldmap.xnb
 Content\House\house.xnb
 Content\House\houseBurnt.xnb
 Content\House\houseFire.xnb
+Content\Tree\burntTree.xnb
+Content\Wood\logs.xnb
+Content\Tree\tree.xnb

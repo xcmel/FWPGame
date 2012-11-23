@@ -15,27 +15,27 @@ using System.Diagnostics;
 
 namespace FWPGame
 {
-    public class Tree : Sprite
+    public class People : Sprite
     {
         private Texture2D[] myAnimateSequence;
         private Animate myAnimate;
         private Texture2D myBurnt;
 
-        public Tree(Texture2D texture, Vector2 position, Vector2 mapPosition, Texture2D[] animateSequence, Texture2D burnt) :
+        public People(Texture2D texture, Vector2 position, Vector2 mapPosition, Texture2D[] animateSequence, Texture2D burnt) :
             base(texture, position)
         {
             myMapPosition = mapPosition;
-  
-            myAnimateSequence = animateSequence; 
+
+            myAnimateSequence = animateSequence;
             myAnimate = new Animate(animateSequence);
             SetUpAnimate();
             myBurnt = burnt;
             myState = new RegularState(this);
         }
 
-        public Tree Clone()
+        public People Clone()
         {
-            return new Tree(this.myTexture, new Vector2(0, 0), new Vector2(0, 0), myAnimateSequence, myBurnt);
+            return new People(this.myTexture, new Vector2(0, 0), new Vector2(0, 0), myAnimateSequence, myBurnt);
         }
 
 
@@ -59,39 +59,47 @@ namespace FWPGame
         {
             // Prepare the flip book sequence for expected Animate
             myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(1, 300);
-            myAnimate.AddFrame(2, 200);
-            myAnimate.AddFrame(3, 250);
-            myAnimate.AddFrame(4, 150);
-            myAnimate.AddFrame(5, 90);
-            myAnimate.AddFrame(6, 310);
-            myAnimate.AddFrame(7, 200);
-            myAnimate.AddFrame(8, 110);
-            myAnimate.AddFrame(9, 350);
+            myAnimate.AddFrame(1, 50);
+            myAnimate.AddFrame(0, 100);
+            myAnimate.AddFrame(2, 50);
+            myAnimate.AddFrame(0, 100);
+            myAnimate.AddFrame(3, 50);
+            myAnimate.AddFrame(0, 100);
+            myAnimate.AddFrame(4, 50);
+            myAnimate.AddFrame(0, 100);
+            myAnimate.AddFrame(5, 50);
+            myAnimate.AddFrame(0, 100);
+            myAnimate.AddFrame(6, 50);
+            myAnimate.AddFrame(0, 100);
+            myAnimate.AddFrame(7, 50);
+            myAnimate.AddFrame(0, 100);
+            myAnimate.AddFrame(8, 50);
+            myAnimate.AddFrame(0, 100);
+            myAnimate.AddFrame(9, 50);
         }
 
 
         // The Regular State
         class RegularState : State
         {
-            private Tree tree;
+            private People people;
 
-            public RegularState(Tree sprite)
+            public RegularState(People sprite)
             {
-                tree = sprite;
+                people = sprite;
             }
 
             public void Update(double elapsedTime, Vector2 playerMapPos)
             {
 
-                tree.myPosition = tree.myMapPosition - playerMapPos;
+                people.myPosition = people.myMapPosition - playerMapPos;
             }
 
             public void Draw(SpriteBatch batch)
             {
-                batch.Draw(tree.myTexture, tree.myPosition,
+                batch.Draw(people.myTexture, people.myPosition,
                         null, Color.White,
-                        tree.myAngle, tree.myOrigin, tree.myScale,
+                        people.myAngle, people.myOrigin, people.myScale,
                         SpriteEffects.None, 0f);
             }
 
@@ -100,27 +108,27 @@ namespace FWPGame
         // The Burning State
         class BurningState : State
         {
-            private Tree tree;
+            private People people;
 
-            public BurningState(Tree sprite)
+            public BurningState(People sprite)
             {
-                tree = sprite;
+                people = sprite;
             }
 
             public void Update(double elapsedTime, Vector2 playerMapPos)
             {
                 bool seqDone = false;
-                tree.myAnimate.Update(elapsedTime, ref seqDone);
+                people.myAnimate.Update(elapsedTime, ref seqDone);
                 if (seqDone)
                 {
-                    tree.myState = new BurntState(tree);
+                    people.myState = new BurntState(people);
                 }
             }
 
             public void Draw(SpriteBatch batch)
             {
-                batch.Draw(tree.myAnimate.GetImage(), tree.myPosition, null, Color.White, tree.myAngle,
-                        tree.myOrigin, tree.myScale,
+                batch.Draw(people.myAnimate.GetImage(), people.myPosition, null, Color.White, people.myAngle,
+                        people.myOrigin, people.myScale,
                         SpriteEffects.None, 0f);
             }
         }
@@ -128,11 +136,11 @@ namespace FWPGame
         // The Burnt State
         class BurntState : State
         {
-            private Tree tree;
+            private People people;
 
-            public BurntState(Tree sprite)
+            public BurntState(People sprite)
             {
-                tree = sprite;
+                people = sprite;
             }
 
             public void Update(double elapsedTime, Vector2 playerMapPos)
@@ -141,9 +149,9 @@ namespace FWPGame
 
             public void Draw(SpriteBatch batch)
             {
-                batch.Draw(tree.myBurnt, tree.myPosition,
+                batch.Draw(people.myBurnt, people.myPosition,
                     null, Color.White,
-                    tree.myAngle, tree.myOrigin, tree.myScale,
+                    people.myAngle, people.myOrigin, people.myScale,
                     SpriteEffects.None, 0f);
             }
 
