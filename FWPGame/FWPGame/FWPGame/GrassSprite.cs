@@ -23,6 +23,7 @@ namespace FWPGame
             myMapPosition = mapPosition;
             myTexture = texture;
             myPosition = position;
+			name = "GrassSprite";
         }
 
         public void setMyPosition(Vector2 pos)

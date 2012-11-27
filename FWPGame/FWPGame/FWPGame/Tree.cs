@@ -31,6 +31,8 @@ namespace FWPGame
             SetUpAnimate();
             myBurnt = burnt;
             myState = new RegularState(this);
+            
+            
         }
 
         public Tree Clone()

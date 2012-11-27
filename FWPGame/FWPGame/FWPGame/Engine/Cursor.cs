@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
+using FWPGame.Powers;
+using System.Collections;
 
 namespace FWPGame.Engine
 {
@@ -15,35 +17,113 @@ namespace FWPGame.Engine
     {
         private FWPGame myGame;
         private Tree tree;
-        private House house;
-
-        public Cursor(Texture2D texture, Vector2 position, FWPGame game) :
+        private ArrayList myPowers;
+        private List<Sprite> sprites;
+        public Cursor(Texture2D texture, Vector2 position, FWPGame game, ArrayList powers) :
             base(texture, position)
         {
             myGame = game;
             myTexture = texture;
             myPosition = position;
+            myPowers = powers;
+            sprites = new List<Sprite>();
         }
 
-        public void Update(MouseState mState)
+        public List<Sprite> getTileSprites(MouseState mState)
+        {
+            List<Sprite> tileSprites = new List<Sprite>();
+            MapTile tile = myGame.map.GetTile(mState);
+            if (tile != null)
+            {
+                tileSprites = tile.mySprites;
+            }
+            return tileSprites;
+        }
+
+        public void Update(MouseState mState, KeyboardState kState)
         {
             myPosition.X = mState.X;
             myPosition.Y = mState.Y;
-
-
+            Array keys = kState.GetPressedKeys();
             myMapPosition = myGame.player.myMapPosition + myPosition;
 
+            MapTile tile = myGame.map.GetTile(mState);
+            if (tile != null)
+            {
+                sprites = tile.mySprites;
+            }
+
+
+            //refactor all of this into a dictionary and use an input manager
             if (mState.LeftButton == ButtonState.Pressed)
             {
-                SpawnHouse(mState);
+                Power power = (Power)myPowers[0];
+                if (sprites.Count > 0)
+                {
+                    SpawnGrass(mState);
+                    //power.Interact(sprites, mState);
+                }
+                else
+                {
+                    SpawnGrass(mState);
+                    //power.Interact(tile);
+                }
             }
 
             if (mState.RightButton == ButtonState.Pressed)
             {
-                if (house != null)
+                List<Sprite> tileSprites = getTileSprites(mState);
+                Power power = (Power)myPowers[1];
+                if (tileSprites.Count > 0)
                 {
-                    house.burn();
+                    SpawnTree(mState);
+                    //power.Interact(tileSprites, mState);
                 }
+                else
+                {
+                    //SpawnTree(mState);
+                    power.Interact(tile);
+                }
+            }
+            if(kState.IsKeyDown(Keys.D1))
+            {
+                BurnTree(mState);
+            }
+            if (kState.IsKeyDown(Keys.D2))
+            {
+                SpawnTree(mState);
+            }
+            if (kState.IsKeyDown(Keys.D3))
+            {
+                SpawnTree(mState);
+            }
+            if (kState.IsKeyDown(Keys.D4))
+            {
+                SpawnTree(mState);
+            }
+            if (kState.IsKeyDown(Keys.D5))
+            {
+                SpawnTree(mState);
+            }
+            if (kState.IsKeyDown(Keys.D6))
+            {
+                SpawnTree(mState);
+            }
+            if (kState.IsKeyDown(Keys.D7))
+            {
+                SpawnTree(mState);
+            }
+            if (kState.IsKeyDown(Keys.D8))
+            {
+                SpawnTree(mState);
+            }
+            if (kState.IsKeyDown(Keys.D9))
+            {
+                SpawnTree(mState);
+            }
+            if (kState.IsKeyDown(Keys.D0))
+            {
+                SpawnGrass(mState);
             }
         }
 
@@ -69,14 +149,25 @@ namespace FWPGame.Engine
             myGame.map.AddToMapTile(tree);
         }
 
-        private void SpawnHouse(MouseState mState)
+        private void BurnTree(MouseState mState)
         {
-            house = myGame.motherHouse.Clone();
-            house.myPosition.X = mState.X;
-            house.myPosition.Y = mState.Y;
-            house.myMapPosition.X = myGame.player.myMapPosition.X + mState.X;
-            house.myMapPosition.Y = myGame.player.myMapPosition.Y + mState.Y;
-            myGame.map.AddToMapTile(house);
+            MapTile tile = myGame.map.GetTile(mState);
+            if (tile != null)
+            {
+                List<Sprite> sprites = tile.mySprites;
+                foreach(Sprite s in sprites)
+                {
+                    try
+                    {
+                        Tree tree = (Tree)s;
+                        tree.burn();
+                    }
+                    catch
+                    {
+                        //intentionally empty
+                    }
+                }
+            }
         }
 
         public override void Draw(SpriteBatch batch)

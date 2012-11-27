@@ -10,6 +10,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using FWPGame.Engine;
+using FWPGame.Powers;
+using System.Collections;
+
 
 namespace FWPGame
 {
@@ -29,7 +32,8 @@ namespace FWPGame
         private Cursor cursor;
         private KeyboardState keyboardState;
         private MouseState mouseState;
-        private Vector2 tempMapSize = new Vector2(1200, 1200);
+        private Vector2 tempMapSize = new Vector2(1920, 1280);
+        protected internal ArrayList powers = new ArrayList();
 
 
         public FWPGame()
@@ -65,7 +69,10 @@ namespace FWPGame
             myGrass = new GrassSprite(Content.Load<Texture2D>("grass"),
                 new Vector2(0, 0),
                 new Vector2(0, 0));
-            cursor = new Cursor(Content.Load<Texture2D>("cursor"), new Vector2(0,0), this);
+            
+            powers.Add(new GrowGrass(this, GrowGrassTextures(), new Vector2(0, 0), new Vector2(0, 0), null));
+
+            cursor = new Cursor(Content.Load<Texture2D>("cursor"), new Vector2(0,0), this, powers);
             player = new Player(new Vector2(0, 0),
                 new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
                 tempMapSize,
@@ -81,6 +88,14 @@ namespace FWPGame
 
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2,
                 graphics.GraphicsDevice.Viewport.Height / 2);
+        }
+
+
+        public ArrayList GrowGrassTextures()
+        {
+            ArrayList grass = new ArrayList();
+            grass.Add(Content.Load<Texture2D>("grass"));
+            return grass;
         }
 
         /// <summary>
@@ -106,7 +121,7 @@ namespace FWPGame
             // TODO: Add your update logic here
             HandleInput();
 
-            cursor.Update(mouseState);
+            cursor.Update(mouseState, keyboardState);
             map.Update(gameTime, mouseState, keyboardState);
 
             base.Update(gameTime);

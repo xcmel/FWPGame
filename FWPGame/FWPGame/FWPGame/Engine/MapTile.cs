@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace FWPGame.Engine
 {
-    class MapTile
+    public class MapTile
     {
 
         protected internal Vector2 myMapPosition;

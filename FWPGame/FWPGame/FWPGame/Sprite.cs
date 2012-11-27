@@ -35,6 +35,8 @@ namespace FWPGame
         protected internal Vector2 myScaleVelocity = new Vector2(0, 0);
         protected internal Vector2 myMapPosition = new Vector2(0, 0);
         protected internal State myState;
+        protected internal String name = "";
+
 
         // The base constructor.
         public Sprite(Texture2D texture, Vector2 position)

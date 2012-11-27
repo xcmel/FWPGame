@@ -10,6 +10,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using FWPGame.Engine;
+using FWPGame.Powers;
+using System.Collections;
+
 
 namespace FWPGame
 {
@@ -39,6 +42,8 @@ namespace FWPGame
             motherTree = new Tree(Content.Load<Texture2D>("tree/tree"), new Vector2(0, 0), new Vector2(0, 0),
                 burnTreeSequence, Content.Load<Texture2D>("tree/burntTree"));
 
+            powers.Add(new SproutTree(this, SproutTreeTextures(), new Vector2(0, 0), new Vector2(0, 0), null));
+
 
             // Create a House instance
             Texture2D[] burnHouseSequence = {
@@ -58,6 +63,14 @@ namespace FWPGame
                 burnHouseSequence, Content.Load<Texture2D>("house/houseBurnt"));
 
         }
+
+        public ArrayList SproutTreeTextures()
+        {
+            ArrayList trees = new ArrayList();
+            trees.Add(Content.Load<Texture2D>("tree/tree"));
+            return trees;
+        }
+
 
     }
 
