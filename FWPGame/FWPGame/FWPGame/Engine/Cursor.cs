@@ -32,7 +32,7 @@ namespace FWPGame.Engine
         public List<Sprite> getTileSprites(MouseState mState)
         {
             List<Sprite> tileSprites = new List<Sprite>();
-            MapTile tile = myGame.map.GetTile(mState);
+            MapTile tile = myGame.map.GetTile(this);
             if (tile != null)
             {
                 tileSprites = tile.mySprites;
@@ -42,12 +42,18 @@ namespace FWPGame.Engine
 
         public void Update(MouseState mState, KeyboardState kState)
         {
-            myPosition.X = mState.X;
-            myPosition.Y = mState.Y;
+            if (mState.X >= 0 && mState.X < myGame.GraphicsDevice.Viewport.Width - 1)
+            {
+                myPosition.X = mState.X;
+            }
+            if (mState.Y >= 0 && mState.Y < myGame.GraphicsDevice.Viewport.Height - 1)
+            {
+                myPosition.Y = mState.Y;
+            }
             Array keys = kState.GetPressedKeys();
             myMapPosition = myGame.player.myMapPosition + myPosition;
 
-            MapTile tile = myGame.map.GetTile(mState);
+            MapTile tile = myGame.map.GetTile(this);
             if (tile != null)
             {
                 sprites = tile.mySprites;
@@ -60,13 +66,14 @@ namespace FWPGame.Engine
                 Power power = (Power)myPowers[0];
                 if (sprites.Count > 0)
                 {
-                    SpawnGrass(mState);
-                    //power.Interact(sprites, mState);
+                    //SpawnGrass(mState);
+                    power.Interact(tile, mState);
                 }
                 else
                 {
-                    SpawnGrass(mState);
-                    //power.Interact(tile);
+                    //SpawnGrass(mState);
+                    power.Interact(tile);
+                    Debug.WriteLine(tile.myMapPosition);
                 }
             }
 
@@ -76,54 +83,21 @@ namespace FWPGame.Engine
                 Power power = (Power)myPowers[1];
                 if (tileSprites.Count > 0)
                 {
-                    SpawnTree(mState);
-                    //power.Interact(tileSprites, mState);
-                }
-                else
-                {
-                    //SpawnTree(mState);
-                    power.Interact(tile);
+                    if (!(tileSprites[tileSprites.Count-1].name.Equals("Tree")))
+                        power.Interact(tile);
                 }
             }
+            // Fire
             if(kState.IsKeyDown(Keys.D1))
             {
-                BurnTree(mState);
+                Power power = (Power)myPowers[2];
+                Debug.WriteLine(power.GetType());
+                power.Interact(tile);
             }
             if (kState.IsKeyDown(Keys.D2))
             {
-                SpawnTree(mState);
-            }
-            if (kState.IsKeyDown(Keys.D3))
-            {
-                SpawnTree(mState);
-            }
-            if (kState.IsKeyDown(Keys.D4))
-            {
-                SpawnTree(mState);
-            }
-            if (kState.IsKeyDown(Keys.D5))
-            {
-                SpawnTree(mState);
-            }
-            if (kState.IsKeyDown(Keys.D6))
-            {
-                SpawnTree(mState);
-            }
-            if (kState.IsKeyDown(Keys.D7))
-            {
-                SpawnTree(mState);
-            }
-            if (kState.IsKeyDown(Keys.D8))
-            {
-                SpawnTree(mState);
-            }
-            if (kState.IsKeyDown(Keys.D9))
-            {
-                SpawnTree(mState);
-            }
-            if (kState.IsKeyDown(Keys.D0))
-            {
-                SpawnGrass(mState);
+                if (tile.mySprites.Count == 0)
+                    tile.Add(myGame.motherHouse.Clone());
             }
         }
 
@@ -151,7 +125,7 @@ namespace FWPGame.Engine
 
         private void BurnTree(MouseState mState)
         {
-            MapTile tile = myGame.map.GetTile(mState);
+            MapTile tile = myGame.map.GetTile(this);
             if (tile != null)
             {
                 List<Sprite> sprites = tile.mySprites;

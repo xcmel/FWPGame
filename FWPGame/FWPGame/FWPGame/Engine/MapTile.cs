@@ -46,6 +46,8 @@ namespace FWPGame.Engine
         public void Add(Sprite s)
         {
             s.myMapPosition = myMapPosition;
+            s.myPosition = myPosition;
+            s.myScale = myScale;
             mySprites.Add(s);
         }
     }

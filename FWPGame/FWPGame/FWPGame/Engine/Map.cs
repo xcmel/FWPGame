@@ -23,6 +23,11 @@ namespace FWPGame.Engine
         private Vector2 myOrigin = new Vector2(0, 0);
         private Vector2 myScale = new Vector2(1, 1);
 
+        public int getMaxTileSize()
+        {
+            return MAX_TILE_SIZE;
+        }
+
         public Map(Texture2D texture, Vector2 screenSize, Vector2 position, Player player)
         {
             if (screenSize.X > texture.Width)
@@ -54,26 +59,18 @@ namespace FWPGame.Engine
         /// </summary>
         /// <param name="mState"></param>
         /// <returns></returns>
-        public MapTile GetTile(MouseState mState)
+        public MapTile GetTile(Cursor cursor)
         {
             int tilesX = (int) myTexture.Bounds.Width / MAX_TILE_SIZE;
             int tilesY = (int)myTexture.Bounds.Height / MAX_TILE_SIZE;
-            int x = mState.X;
-            int y = mState.Y;
-            for (int i = 0; i < tilesX; i++)
-            {
-                for (int j = 0; j < tilesY; j++)
-                {
-                    MapTile tile = mapTiles[i,j];
-                    float tileX = tile.myMapPosition.X;
-                    float tileY = tile.myMapPosition.Y;
-                    if((x >= tileX) && (x < (tileX + MAX_TILE_SIZE)) && ( y >= tileY) && (y < tileY + MAX_TILE_SIZE))
-                    {
-                        return tile;
-                    }
-                }
-            }
-            return null;
+            int x = (int) cursor.myMapPosition.X / MAX_TILE_SIZE;
+            int y = (int) cursor.myMapPosition.Y / MAX_TILE_SIZE;
+            if (x >= tilesX)
+                x = tilesX - 1;
+            if (y >= tilesY)
+                y = tilesY - 1;
+            MapTile tile = mapTiles[x, y];
+            return tile;
         }
 
         public void CreateTileGrid(Rectangle textureSize)

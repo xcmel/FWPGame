@@ -76,13 +76,16 @@
   <ItemGroup>
     <Compile Include="Animate.cs" />
     <Compile Include="Engine\Cursor.cs" />
+    <Compile Include="Engine\GameAction.cs" />
+    <Compile Include="Engine\InputManager.cs" />
     <Compile Include="Engine\MapTile.cs" />
-    <Compile Include="GrassSprite.cs" />
+    <Compile Include="Items\GrassSprite.cs" />
     <Compile Include="Engine\Map.cs" />
     <Compile Include="Engine\Player.cs" />
-    <Compile Include="House.cs" />
+    <Compile Include="Items\House.cs" />
     <Compile Include="LoadObjects.cs" />
-    <Compile Include="People.cs" />
+    <Compile Include="Items\People.cs" />
+    <Compile Include="Powers\Fire.cs" />
     <Compile Include="Powers\GrowGrass.cs" />
     <Compile Include="Powers\Power.cs" />
     <Compile Include="Powers\SproutTree.cs" />
@@ -91,8 +94,8 @@
     <Compile Include="FWPGame.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="State.cs" />
-    <Compile Include="Tree.cs" />
-    <Compile Include="Wood.cs" />
+    <Compile Include="Items\Tree.cs" />
+    <Compile Include="Items\Wood.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

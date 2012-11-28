@@ -20,17 +20,13 @@ namespace FWPGame.Powers
 
     class Power
     {
-        protected internal ArrayList textures;//Texture2D
-        protected internal ArrayList animateSequences;//Texture2D[]
         protected internal Vector2 myPosition;
         protected internal Vector2 myMapPosition;
         protected internal FWPGame game;
 
-        public Power(FWPGame game, ArrayList textures, Vector2 myPosition, Vector2 myMapPosition, ArrayList animateSequences)
+        public Power(FWPGame game, Vector2 myPosition, Vector2 myMapPosition)
         {
             this.game = game;
-            this.textures = textures;
-            this.animateSequences = animateSequences;
             this.myPosition = myPosition;
             this.myMapPosition = myMapPosition;
         }
@@ -45,7 +41,7 @@ namespace FWPGame.Powers
             myMapPosition = pos;
         }
 
-        public virtual void Interact(List<Sprite> sprites, MouseState mState)
+        public virtual void Interact(MapTile tile, MouseState mState)
         {
         }
 

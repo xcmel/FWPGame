@@ -42,7 +42,8 @@ namespace FWPGame
             motherTree = new Tree(Content.Load<Texture2D>("tree/tree"), new Vector2(0, 0), new Vector2(0, 0),
                 burnTreeSequence, Content.Load<Texture2D>("tree/burntTree"));
 
-            powers.Add(new SproutTree(this, SproutTreeTextures(), new Vector2(0, 0), new Vector2(0, 0), null));
+            powers.Add(new SproutTree(this, new Vector2(0, 0), new Vector2(0, 0)));
+            powers.Add(new Fire(this, new Vector2(0, 0), new Vector2(0, 0)));
 
 
             // Create a House instance
@@ -64,12 +65,12 @@ namespace FWPGame
 
         }
 
-        public ArrayList SproutTreeTextures()
-        {
-            ArrayList trees = new ArrayList();
-            trees.Add(Content.Load<Texture2D>("tree/tree"));
-            return trees;
-        }
+        //public ArrayList SproutTreeTextures()
+        //{
+        //    ArrayList trees = new ArrayList();
+        //    trees.Add(Content.Load<Texture2D>("tree/tree"));
+        //    return trees;
+        //}
 
 
     }

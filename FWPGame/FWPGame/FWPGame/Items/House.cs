@@ -25,7 +25,7 @@ namespace FWPGame
             base(texture, position)
         {
             myMapPosition = mapPosition;
-
+            name = "House";
             myAnimateSequence = animateSequence;
             myAnimate = new Animate(animateSequence);
             SetUpAnimate();

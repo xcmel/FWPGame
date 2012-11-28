@@ -32,7 +32,7 @@ namespace FWPGame
         private Cursor cursor;
         private KeyboardState keyboardState;
         private MouseState mouseState;
-        private Vector2 tempMapSize = new Vector2(1920, 1280);
+        private Vector2 tempMapSize = new Vector2(1200, 1200);
         protected internal ArrayList powers = new ArrayList();
 
 
@@ -69,8 +69,8 @@ namespace FWPGame
             myGrass = new GrassSprite(Content.Load<Texture2D>("grass"),
                 new Vector2(0, 0),
                 new Vector2(0, 0));
-            
-            powers.Add(new GrowGrass(this, GrowGrassTextures(), new Vector2(0, 0), new Vector2(0, 0), null));
+
+            powers.Add(new GrowGrass(this, new Vector2(0, 0), new Vector2(0, 0)));
 
             cursor = new Cursor(Content.Load<Texture2D>("cursor"), new Vector2(0,0), this, powers);
             player = new Player(new Vector2(0, 0),
@@ -88,14 +88,6 @@ namespace FWPGame
 
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2,
                 graphics.GraphicsDevice.Viewport.Height / 2);
-        }
-
-
-        public ArrayList GrowGrassTextures()
-        {
-            ArrayList grass = new ArrayList();
-            grass.Add(Content.Load<Texture2D>("grass"));
-            return grass;
         }
 
         /// <summary>

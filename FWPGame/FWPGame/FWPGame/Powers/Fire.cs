@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
+using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -9,13 +10,14 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using FWPGame.Engine;
-using System.Collections;
+using System.Reflection;
 
 namespace FWPGame.Powers
 {
-    class SproutTree : Power
+    class Fire : Power
     {
-        public SproutTree(FWPGame aGame, Vector2 position, Vector2 mapPosition) :
+
+        public Fire(FWPGame aGame, Vector2 position, Vector2 mapPosition) :
             base(aGame, position, mapPosition)
         {
             game = aGame;
@@ -25,29 +27,35 @@ namespace FWPGame.Powers
 
         public override void Interact(MapTile tile)
         {
-            bool grassFound = false;
+            bool isBurnable = false;
+            Sprite spriteToBurn = null;
             if (tile.mySprites.Count > 0)
             {
                 foreach (Sprite s in tile.mySprites)
                 {
                     if (s != null)
                     {
-                        if (s.name.Equals("GrassSprite"))
+                        if (s.name.Equals("House") || s.name.Equals("Tree"))
                         {
-                            grassFound = true;
+                            isBurnable = true;
+                            spriteToBurn = s;
                             break;
                         }
                     }
                 }
             }
-            if (grassFound)
-                 tile.Add(game.motherTree.Clone());
+            if (isBurnable)
+            {
+                MethodInfo myMethod = spriteToBurn.GetType().GetMethod("burn");
+                myMethod.Invoke(spriteToBurn, null);
+            }
+                 
         }
+
 
         public override void PowerCombo(Power power2, MouseState mState)
         {
             //not currently implemented
         }
-
     }
 }
