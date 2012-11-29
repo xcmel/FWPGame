@@ -82,6 +82,7 @@ namespace FWPGame
                 new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
                 new Vector2(0, 0),
                 player);
+            worldScale = map.baseScale;
 
             // TODO: use this.Content to load your game content here
             LoadObjects();
@@ -113,8 +114,8 @@ namespace FWPGame
             // TODO: Add your update logic here
             HandleInput();
 
-            cursor.Update(gameTime);
-            map.Update(gameTime);
+            cursor.Update(gameTime, worldScale);
+            map.Update(gameTime, worldScale);
 
             base.Update(gameTime);
         }

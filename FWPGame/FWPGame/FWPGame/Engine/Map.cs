@@ -24,6 +24,8 @@ namespace FWPGame.Engine
         private Vector2 myScale = new Vector2(1, 1);
         private Vector2 mySize = new Vector2(0, 0);
 
+        public Vector2 baseScale = new Vector2(1, 1);
+
         public int getMaxTileSize()
         {
             return MAX_TILE_SIZE;
@@ -31,10 +33,16 @@ namespace FWPGame.Engine
 
         public Map(Texture2D texture, Vector2 screenSize, Vector2 position, Player player)
         {
-            if (screenSize.X > texture.Width)
+            /*if (screenSize.X > texture.Width)
             {
-                myScale = new Vector2(2, 2);
+                baseScale = new Vector2(screenSize.X / texture.Width, screenSize.X / texture.Width);
             }
+            else if (screenSize.Y > texture.Height)
+            {
+                baseScale = new Vector2(screenSize.Y / texture.Height, screenSize.Y / texture.Height);
+            }*/
+            baseScale = new Vector2(2, 2);
+            myScale = baseScale;
             myTexture = texture;
             myPosition = position;
             myScreenSize = screenSize;
@@ -48,9 +56,10 @@ namespace FWPGame.Engine
         /// <summary>
         /// Update the map's relative positions with the player's position
         /// </summary>
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, Vector2 worldScale)
         {
-            myPlayer.Update(gameTime.ElapsedGameTime.TotalSeconds);
+            myPlayer.Update(gameTime, worldScale);
+            myScale = worldScale;
             myPosition = -(myPlayer.myMapPosition);
             foreach (MapTile m in mapTiles)
             {

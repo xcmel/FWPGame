@@ -50,7 +50,7 @@ namespace FWPGame.Engine
         /// Update the map position.
         /// </summary>
         /// <param name="gameTime"></param>
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, Vector2 worldScale)
         {
             myMapPosition = myGame.player.myMapPosition + myPosition;
             
@@ -88,6 +88,23 @@ namespace FWPGame.Engine
                 this.GetType().GetMethod("Follow"),
                 new object[0]);
             InputManager.AddToMouseMap(InputManager.POSITION, follow);
+
+
+            object[] param = new object[1];
+            object[] paramZ = new object[1];
+            param[0] = -1;
+            GameAction zoomOut = new GameAction(
+                this,
+                this.GetType().GetMethod("Zoom"),
+                param);
+            paramZ[0] = 1;
+            GameAction zoomIn = new GameAction(
+                this,
+                this.GetType().GetMethod("Zoom"),
+                paramZ);
+
+            InputManager.AddToKeyboardMap(Keys.Add, zoomIn);
+            InputManager.AddToKeyboardMap(Keys.Subtract, zoomOut);
         }
 
         /// <summary>
@@ -98,6 +115,25 @@ namespace FWPGame.Engine
         {
             myPosition.X = position.X - myTexture.Width / 2;
             myPosition.Y = position.Y - myTexture.Height / 2;
+        }
+
+        //1 for zoom in, -1 for zoom out, 0 for reset zoom
+        public void Zoom(int dir)
+        {
+            Vector2 zoomVelocity = new Vector2(0.1f, 0.1f);
+            if (dir == -1 && (myGame.worldScale.X > myGame.map.baseScale.X) && (myGame.worldScale.Y > myGame.map.baseScale.Y))
+            {
+                myGame.worldScale -= zoomVelocity;
+                Debug.WriteLine(myGame.worldScale);
+            }
+            else if (dir == 1)
+            {
+                myGame.worldScale += zoomVelocity;
+            }
+            else if (dir == 0)
+            {
+                myGame.worldScale = myGame.map.baseScale;
+            }
         }
     }
 }

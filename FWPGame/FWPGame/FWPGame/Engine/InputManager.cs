@@ -87,6 +87,7 @@ namespace FWPGame.Engine
                     a.Invoke(parameterList);
                 }
             }
+
             if (myMouseMap.ContainsKey(POSITION))
             {
                 foreach (GameAction a in myMouseMap[POSITION])

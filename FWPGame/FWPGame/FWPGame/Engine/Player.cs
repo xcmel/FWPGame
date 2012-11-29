@@ -83,7 +83,7 @@ namespace FWPGame.Engine
         /// Check for cursor location and decide whether to move the player via mouse scrolling.  
         /// </summary>
         /// <param name="elapsedTime">game time elapsed</param>
-        public void Update(double elapsedTime)
+        public void Update(GameTime gameTime, Vector2 worldScale)
         {
             myMapPosition += myVelocity;
             myVelocity = new Vector2(0, 0);
