@@ -15,8 +15,8 @@ namespace FWPGame.Powers
 {
     class SproutTree : Power
     {
-        public SproutTree(FWPGame aGame, Vector2 position, Vector2 mapPosition) :
-            base(aGame, position, mapPosition)
+        public SproutTree(Texture2D icon, FWPGame aGame, Vector2 position, Vector2 mapPosition) :
+            base(icon, aGame, position, mapPosition)
         {
             game = aGame;
             myPosition = position;
@@ -41,7 +41,10 @@ namespace FWPGame.Powers
                 }
             }
             if (grassFound)
-                 tile.Add(game.motherTree.Clone());
+            {
+                tile.Clear();
+                tile.Add(game.motherTree.Clone());
+            }
         }
 
         public override void PowerCombo(Power power2, MouseState mState)

@@ -12,11 +12,11 @@ namespace FWPGame.Engine
     // method using reflection.
     class GameAction
     {
-        Power myActor;
+        Object myActor;
         MethodInfo myMethod;
         object[] myParameters;
 
-        public GameAction(Power actor, MethodInfo method, object[] param)
+        public GameAction(Object actor, MethodInfo method, object[] param)
         {
             myActor = actor;
             myMethod = method;

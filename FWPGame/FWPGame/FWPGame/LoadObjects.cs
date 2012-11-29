@@ -42,8 +42,7 @@ namespace FWPGame
             motherTree = new Tree(Content.Load<Texture2D>("tree/tree"), new Vector2(0, 0), new Vector2(0, 0),
                 burnTreeSequence, Content.Load<Texture2D>("tree/burntTree"));
 
-            powers.Add(new SproutTree(this, new Vector2(0, 0), new Vector2(0, 0)));
-            powers.Add(new Fire(this, new Vector2(0, 0), new Vector2(0, 0)));
+
 
 
             // Create a House instance
@@ -62,6 +61,10 @@ namespace FWPGame
             };
             motherHouse = new House(Content.Load<Texture2D>("house/house"), new Vector2(0, 0), new Vector2(0, 0),
                 burnHouseSequence, Content.Load<Texture2D>("house/houseBurnt"));
+
+            powers.Add(new SproutTree(Content.Load<Texture2D>("UI/treeicon"), this, new Vector2(0, 0), new Vector2(0, 0)));
+            powers.Add(new Fire(Content.Load<Texture2D>("UI/fireicon"), this, new Vector2(0, 0), new Vector2(0, 0)));
+            powers.Add(new BuildHouse(Content.Load<Texture2D>("UI/home"), this, new Vector2(0, 0), new Vector2(0, 0)));
 
         }
 

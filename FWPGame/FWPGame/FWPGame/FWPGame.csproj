@@ -85,6 +85,7 @@
     <Compile Include="Items\House.cs" />
     <Compile Include="LoadObjects.cs" />
     <Compile Include="Items\People.cs" />
+    <Compile Include="Powers\BuildHouse.cs" />
     <Compile Include="Powers\Fire.cs" />
     <Compile Include="Powers\GrowGrass.cs" />
     <Compile Include="Powers\Power.cs" />

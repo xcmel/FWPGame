@@ -23,9 +23,11 @@ namespace FWPGame.Powers
         protected internal Vector2 myPosition;
         protected internal Vector2 myMapPosition;
         protected internal FWPGame game;
+        protected internal Texture2D myIcon;
 
-        public Power(FWPGame game, Vector2 myPosition, Vector2 myMapPosition)
+        public Power(Texture2D icon, FWPGame game, Vector2 myPosition, Vector2 myMapPosition)
         {
+            this.myIcon = icon;
             this.game = game;
             this.myPosition = myPosition;
             this.myMapPosition = myMapPosition;

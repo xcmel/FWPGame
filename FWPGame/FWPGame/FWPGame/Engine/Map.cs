@@ -22,6 +22,7 @@ namespace FWPGame.Engine
         private float myAngle = 0f;
         private Vector2 myOrigin = new Vector2(0, 0);
         private Vector2 myScale = new Vector2(1, 1);
+        private Vector2 mySize = new Vector2(0, 0);
 
         public int getMaxTileSize()
         {
@@ -38,15 +39,18 @@ namespace FWPGame.Engine
             myPosition = position;
             myScreenSize = screenSize;
             myPlayer = player;
-            CreateTileGrid(texture.Bounds);
+            mySize.X = myTexture.Bounds.Width * myScale.X;
+            mySize.Y = myTexture.Bounds.Height * myScale.Y;
+            player.myMapSize = mySize;
+            CreateTileGrid(mySize);
         }
 
         /// <summary>
         /// Update the map's relative positions with the player's position
         /// </summary>
-        public void Update(GameTime gameTime, MouseState mState, KeyboardState kState)
+        public void Update(GameTime gameTime)
         {
-            myPlayer.Update(gameTime.ElapsedGameTime.TotalSeconds, kState, mState);
+            myPlayer.Update(gameTime.ElapsedGameTime.TotalSeconds);
             myPosition = -(myPlayer.myMapPosition);
             foreach (MapTile m in mapTiles)
             {
@@ -55,29 +59,36 @@ namespace FWPGame.Engine
         }
 
         /// <summary>
-        /// change to use cursor
+        /// Get the MapTile the cursor is on - built-in safeguards to disallow index out of bounds exceptions.
         /// </summary>
-        /// <param name="mState"></param>
         /// <returns></returns>
         public MapTile GetTile(Cursor cursor)
         {
-            int tilesX = (int) myTexture.Bounds.Width / MAX_TILE_SIZE;
-            int tilesY = (int)myTexture.Bounds.Height / MAX_TILE_SIZE;
+            int tilesX = (int) mySize.X / MAX_TILE_SIZE;
+            int tilesY = (int) mySize.Y / MAX_TILE_SIZE;
             int x = (int) cursor.myMapPosition.X / MAX_TILE_SIZE;
             int y = (int) cursor.myMapPosition.Y / MAX_TILE_SIZE;
             if (x >= tilesX)
                 x = tilesX - 1;
+            if (x < 0)
+                x = 0;
             if (y >= tilesY)
                 y = tilesY - 1;
+            if (y < 0)
+                y = 0;
             MapTile tile = mapTiles[x, y];
             return tile;
         }
 
-        public void CreateTileGrid(Rectangle textureSize)
+        /// <summary>
+        /// Create the tile grid given the size of the map.
+        /// </summary>
+        /// <param name="textureSize"></param>
+        public void CreateTileGrid(Vector2 textureSize)
         {
 
-            int tilesX = (int) textureSize.Width / MAX_TILE_SIZE;
-            int tilesY = (int)textureSize.Height / MAX_TILE_SIZE;
+            int tilesX = (int) textureSize.X / MAX_TILE_SIZE;
+            int tilesY = (int) textureSize.Y / MAX_TILE_SIZE;
             mapTiles = new MapTile[tilesX, tilesY];
             for (int i = 0; i < tilesX; i++)
             {
@@ -90,15 +101,6 @@ namespace FWPGame.Engine
             }
         }
 
-        public void AddToMapTile(Sprite s)
-        {
-            var x = (int)(myPlayer.myCursor.myMapPosition.X / (MAX_TILE_SIZE * myScale.X));
-            var y = (int)(myPlayer.myCursor.myMapPosition.Y / (MAX_TILE_SIZE * myScale.Y));
-            //if to prevent error if clicking off game
-            if((x >= 0) && (x < myScreenSize.X) && (y >= 0) && (y < myScreenSize.Y)){ 
-                mapTiles[x, y].Add(s);
-            }
-        }
 
         /// <summary>
         /// Draw the map, then draw the MapTiles that are visible to the player.
@@ -114,10 +116,10 @@ namespace FWPGame.Engine
                    SpriteEffects.None, 0f);
 
             // We only want to render the map tiles that are visible, so we need to find which ones the player can see
-            var x = (int)Math.Floor((myPlayer.myMapPosition.X / (MAX_TILE_SIZE * myScale.X)));
-            var xmax = (int)Math.Floor((myPlayer.myMapPosition.X + myScreenSize.X) / (MAX_TILE_SIZE * myScale.X)) - 1;
-            var y = (int)Math.Floor((myPlayer.myMapPosition.Y) / (MAX_TILE_SIZE * myScale.Y));
-            var ymax = (int)Math.Floor((myPlayer.myMapPosition.Y + myScreenSize.Y) / (MAX_TILE_SIZE * myScale.Y)) - 1;
+            var x = (int)Math.Floor((myPlayer.myMapPosition.X / (MAX_TILE_SIZE)));
+            var xmax = (int)Math.Floor((myPlayer.myMapPosition.X + myScreenSize.X) / (MAX_TILE_SIZE));
+            var y = (int)Math.Floor((myPlayer.myMapPosition.Y) / (MAX_TILE_SIZE));
+            var ymax = (int)Math.Floor((myPlayer.myMapPosition.Y + myScreenSize.Y) / (MAX_TILE_SIZE));
 
             if (xmax >= mapTiles.GetLength(0))
                 xmax = mapTiles.GetLength(0) - 1;

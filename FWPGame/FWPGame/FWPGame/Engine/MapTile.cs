@@ -25,6 +25,11 @@ namespace FWPGame.Engine
             mySize = size;
         }
 
+        public void Clear()
+        {
+            mySprites.Clear();
+        }
+
         public void Update(GameTime gameTime, Vector2 playerPosition)
         {
             myPosition = myMapPosition - playerPosition;

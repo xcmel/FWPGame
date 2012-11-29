@@ -70,9 +70,14 @@ namespace FWPGame.Engine
             // The good news is that more buttons aren't likely to be added to the mouse any time soon.
             if (mouseState.LeftButton == ButtonState.Pressed && myMouseMap.ContainsKey(LEFT_BUTTON))
             {
+                GameAction oldAction = null;
                 foreach (GameAction a in myMouseMap[LEFT_BUTTON])
                 {
-                    a.Invoke(parameterList);
+                    if (!(a.Equals(oldAction)))
+                    {
+                        a.Invoke(parameterList);
+                        oldAction = a;
+                    }
                 }
             }
             if (mouseState.RightButton == ButtonState.Pressed && myMouseMap.ContainsKey(RIGHT_BUTTON))

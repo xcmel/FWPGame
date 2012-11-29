@@ -30,18 +30,18 @@ namespace FWPGame
         public GrassSprite myGrass;
         public Player player;
         private Cursor cursor;
-        private KeyboardState keyboardState;
-        private MouseState mouseState;
         private Vector2 tempMapSize = new Vector2(1200, 1200);
         protected internal ArrayList powers = new ArrayList();
+        public Vector2 worldScale;
 
 
         public FWPGame()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 1024;
-            graphics.PreferredBackBufferHeight = 768;
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 720;
             Content.RootDirectory = "Content";
+            graphics.IsFullScreen = true;
         }
 
         /// <summary>
@@ -70,13 +70,13 @@ namespace FWPGame
                 new Vector2(0, 0),
                 new Vector2(0, 0));
 
-            powers.Add(new GrowGrass(this, new Vector2(0, 0), new Vector2(0, 0)));
+            powers.Add(new GrowGrass(Content.Load<Texture2D>("UI/sprouts"), this, new Vector2(0, 0), new Vector2(0, 0)));
 
             cursor = new Cursor(Content.Load<Texture2D>("cursor"), new Vector2(0,0), this, powers);
-            player = new Player(new Vector2(0, 0),
+            player = new Player(Content.Load<Texture2D>("UI/icon"), chiF, new Vector2(0, 0),
                 new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
                 tempMapSize,
-                cursor);
+                cursor, powers);
 
             map = new Map(Content.Load<Texture2D>("Maps/Mars/marsorbit"),
                 new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
@@ -113,19 +113,17 @@ namespace FWPGame
             // TODO: Add your update logic here
             HandleInput();
 
-            cursor.Update(mouseState, keyboardState);
-            map.Update(gameTime, mouseState, keyboardState);
+            cursor.Update(gameTime);
+            map.Update(gameTime);
 
             base.Update(gameTime);
         }
 
         private void HandleInput()
         {
-            // get the input states
-            mouseState = Mouse.GetState();
-            keyboardState = Keyboard.GetState();
 
-
+            InputManager.ActKeyboard(Keyboard.GetState());
+            InputManager.ActMouse(Mouse.GetState());
         }
 
 
@@ -142,6 +140,7 @@ namespace FWPGame
 
             map.Draw(spriteBatch);
             cursor.Draw(spriteBatch);
+            player.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);

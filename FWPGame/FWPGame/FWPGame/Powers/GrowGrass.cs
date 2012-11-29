@@ -15,8 +15,8 @@ namespace FWPGame.Powers
 {
     class GrowGrass : Power
     {
-        public GrowGrass(FWPGame aGame, Vector2 position, Vector2 mapPosition) :
-            base(aGame, position, mapPosition)
+        public GrowGrass(Texture2D icon, FWPGame aGame, Vector2 position, Vector2 mapPosition) :
+            base(icon, aGame, position, mapPosition)
         {
             game = aGame;
             myPosition = position;
@@ -30,8 +30,8 @@ namespace FWPGame.Powers
 
         public override void Interact(MapTile tile)
         {
-            tile.Add(game.myGrass.Clone());
-            
+            tile.Clear();
+            tile.Add(game.myGrass.Clone());            
         }
 
         public override void PowerCombo(Power power2, MouseState mState)

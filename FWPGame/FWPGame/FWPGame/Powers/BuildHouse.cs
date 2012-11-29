@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -10,14 +9,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using FWPGame.Engine;
-using System.Reflection;
+using System.Collections;
 
 namespace FWPGame.Powers
 {
-    class Fire : Power
+    class BuildHouse : Power
     {
-
-        public Fire(Texture2D icon, FWPGame aGame, Vector2 position, Vector2 mapPosition) :
+        public BuildHouse(Texture2D icon, FWPGame aGame, Vector2 position, Vector2 mapPosition) :
             base(icon, aGame, position, mapPosition)
         {
             game = aGame;
@@ -27,35 +25,32 @@ namespace FWPGame.Powers
 
         public override void Interact(MapTile tile)
         {
-            bool isBurnable = false;
-            Sprite spriteToBurn = null;
+            bool grassFound = false;
             if (tile.mySprites.Count > 0)
             {
                 foreach (Sprite s in tile.mySprites)
                 {
                     if (s != null)
                     {
-                        if (s.name.Equals("House") || s.name.Equals("Tree"))
+                        if (s.name.Equals("GrassSprite"))
                         {
-                            isBurnable = true;
-                            spriteToBurn = s;
+                            grassFound = true;
                             break;
                         }
                     }
                 }
             }
-            if (isBurnable)
+            if (grassFound)
             {
-                MethodInfo myMethod = spriteToBurn.GetType().GetMethod("burn");
-                myMethod.Invoke(spriteToBurn, null);
+                tile.Clear();
+                tile.Add(game.motherHouse.Clone());
             }
-                 
         }
-
 
         public override void PowerCombo(Power power2, MouseState mState)
         {
             //not currently implemented
         }
+
     }
 }
