@@ -10,6 +10,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
+using FWPGame.Engine;
+using FWPGame.Powers;
 using System.Collections;
 using System.Diagnostics;
 
@@ -17,25 +19,25 @@ namespace FWPGame
 {
     public class People : Sprite
     {
-        private Texture2D[] myAnimateSequence;
-        private Animate myAnimate;
+        private Texture2D[] myBurningSequence;
+        private Animate myBurning;
         private Texture2D myBurnt;
 
-        public People(Texture2D texture, Vector2 position, Vector2 mapPosition, Texture2D[] animateSequence, Texture2D burnt) :
+        public People(Texture2D texture, Vector2 position, Vector2 mapPosition, Texture2D[] burningSequence, Texture2D burnt) :
             base(texture, position)
         {
             myMapPosition = mapPosition;
-
-            myAnimateSequence = animateSequence;
-            myAnimate = new Animate(animateSequence);
-            SetUpAnimate();
+            name = "People";
+            myBurningSequence = burningSequence;
+            myBurning = new Animate(burningSequence);
+            SetUpBurning();
             myBurnt = burnt;
             myState = new RegularState(this);
         }
 
         public People Clone()
         {
-            return new People(this.myTexture, new Vector2(0, 0), new Vector2(0, 0), myAnimateSequence, myBurnt);
+            return new People(this.myTexture, new Vector2(0, 0), new Vector2(0, 0), myBurningSequence, myBurnt);
         }
 
 
@@ -44,39 +46,30 @@ namespace FWPGame
             myState = new BurningState(this);
         }
 
-        public void setMyPosition(Vector2 pos)
-        {
-            myPosition = pos;
-        }
 
-        public void setMyMapPosition(Vector2 pos)
-        {
-            myMapPosition = pos;
-        }
-
-
-        public void SetUpAnimate()
+        public void SetUpBurning()
         {
             // Prepare the flip book sequence for expected Animate
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(1, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(2, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(3, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(4, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(5, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(6, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(7, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(8, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(9, 50);
+            myBurning.AddFrame(0, 100);
+            myBurning.AddFrame(1, 50);
+            myBurning.AddFrame(0, 100);
+            myBurning.AddFrame(2, 50);
+            myBurning.AddFrame(0, 100);
+            myBurning.AddFrame(3, 50);
+            myBurning.AddFrame(0, 100);
+            myBurning.AddFrame(4, 50);
+            myBurning.AddFrame(0, 100);
+            myBurning.AddFrame(5, 50);
+            myBurning.AddFrame(0, 100);
+            myBurning.AddFrame(6, 50);
+            myBurning.AddFrame(0, 100);
+            myBurning.AddFrame(7, 50);
+            myBurning.AddFrame(0, 100);
+            myBurning.AddFrame(8, 50);
+            myBurning.AddFrame(0, 100);
+            myBurning.AddFrame(9, 50);
         }
+
 
 
         // The Regular State
@@ -89,17 +82,19 @@ namespace FWPGame
                 people = sprite;
             }
 
+
             // Determine whether this is a spreading conditition
             public Sprite Spread()
             {
                 return null;
             }
 
+
             public void Update(double elapsedTime, Vector2 playerMapPos)
             {
-
-                people.myPosition = people.myMapPosition - playerMapPos;
+                
             }
+
 
             public void Draw(SpriteBatch batch)
             {
@@ -108,18 +103,21 @@ namespace FWPGame
                         people.myAngle, people.myOrigin, people.myScale,
                         SpriteEffects.None, 0f);
             }
-
         }
+
+
 
         // The Burning State
         class BurningState : State
         {
             private People people;
 
+
             public BurningState(People sprite)
             {
                 people = sprite;
             }
+
 
             // Determine whether this is a spreading conditition
             public Sprite Spread()
@@ -127,33 +125,39 @@ namespace FWPGame
                 return null;
             }
 
+
             public void Update(double elapsedTime, Vector2 playerMapPos)
             {
                 bool seqDone = false;
-                people.myAnimate.Update(elapsedTime, ref seqDone);
+                people.myBurning.Update(elapsedTime, ref seqDone);
                 if (seqDone)
                 {
                     people.myState = new BurntState(people);
                 }
             }
 
+
             public void Draw(SpriteBatch batch)
             {
-                batch.Draw(people.myAnimate.GetImage(), people.myPosition, null, Color.White, people.myAngle,
+                batch.Draw(people.myBurning.GetImage(), people.myPosition, null, Color.White, people.myAngle,
                         people.myOrigin, people.myScale,
                         SpriteEffects.None, 0f);
             }
         }
+
+
 
         // The Burnt State
         class BurntState : State
         {
             private People people;
 
+
             public BurntState(People sprite)
             {
                 people = sprite;
             }
+
 
             // Determine whether this is a spreading conditition
             public Sprite Spread()
@@ -161,9 +165,12 @@ namespace FWPGame
                 return null;
             }
 
+
             public void Update(double elapsedTime, Vector2 playerMapPos)
             {
+
             }
+
 
             public void Draw(SpriteBatch batch)
             {

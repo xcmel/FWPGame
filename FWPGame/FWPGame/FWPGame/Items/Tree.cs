@@ -19,37 +19,34 @@ namespace FWPGame
 {
     public class Tree : Sprite
     {
-        private Texture2D[] myAnimateSequence;
-        private Animate myAnimate;
+        private Texture2D[] myBurningSequence;
+        private Animate myBurning;
         private Texture2D myBurnt;
         private Texture2D[] myMultiplySequence;
         private Animate myMultiply;
-        private FWPGame myGame;
+
 
         public Tree(Texture2D texture, Vector2 position, Vector2 mapPosition,
-            Texture2D[] animateSequence, Texture2D burnt, Texture2D[] multiplyTree,
-            FWPGame game) :
+            Texture2D[] burningSequence, Texture2D burnt, Texture2D[] multiplyTree) :
             base(texture, position)
         {
             myMapPosition = mapPosition;
             name = "Tree";
-            myAnimateSequence = animateSequence;
-            myAnimate = new Animate(animateSequence);
-            SetUpAnimate();
+            myBurningSequence = burningSequence;
+            myBurning = new Animate(burningSequence);
+            SetUpBurning();
             myBurnt = burnt;
             myMultiplySequence = multiplyTree;
             myMultiply = new Animate(multiplyTree);
             SetUpMultiply();
-            myGame = game;
             myState = new RegularState(this);
-
-
         }
+
 
         public Tree Clone()
         {
             return new Tree(this.myTexture, new Vector2(0, 0), new Vector2(0, 0),
-                myAnimateSequence, myBurnt, myMultiplySequence, myGame);
+                myBurningSequence, myBurnt, myMultiplySequence);
         }
 
 
@@ -58,10 +55,12 @@ namespace FWPGame
             myState = new BurningState(this);
         }
 
+
         public void setMyPosition(Vector2 pos)
         {
             myPosition = pos;
         }
+
 
         public void setMyMapPosition(Vector2 pos)
         {
@@ -69,29 +68,29 @@ namespace FWPGame
         }
 
 
-        public void SetUpAnimate()
+        public void SetUpBurning()
         {
             // Prepare the flip book sequence for expected Animate
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(1, 300);
-            myAnimate.AddFrame(2, 200);
-            myAnimate.AddFrame(3, 250);
-            myAnimate.AddFrame(4, 150);
-            myAnimate.AddFrame(5, 90);
-            myAnimate.AddFrame(6, 310);
-            myAnimate.AddFrame(7, 200);
-            myAnimate.AddFrame(8, 110);
-            myAnimate.AddFrame(9, 350);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(1, 300);
-            myAnimate.AddFrame(2, 200);
-            myAnimate.AddFrame(3, 250);
-            myAnimate.AddFrame(4, 150);
-            myAnimate.AddFrame(5, 90);
-            myAnimate.AddFrame(6, 310);
-            myAnimate.AddFrame(7, 200);
-            myAnimate.AddFrame(8, 110);
-            myAnimate.AddFrame(9, 350);
+            myBurning.AddFrame(0, 100);
+            myBurning.AddFrame(1, 300);
+            myBurning.AddFrame(2, 200);
+            myBurning.AddFrame(3, 250);
+            myBurning.AddFrame(4, 150);
+            myBurning.AddFrame(5, 90);
+            myBurning.AddFrame(6, 310);
+            myBurning.AddFrame(7, 200);
+            myBurning.AddFrame(8, 110);
+            myBurning.AddFrame(9, 350);
+            myBurning.AddFrame(0, 100);
+            myBurning.AddFrame(1, 300);
+            myBurning.AddFrame(2, 200);
+            myBurning.AddFrame(3, 250);
+            myBurning.AddFrame(4, 150);
+            myBurning.AddFrame(5, 90);
+            myBurning.AddFrame(6, 310);
+            myBurning.AddFrame(7, 200);
+            myBurning.AddFrame(8, 110);
+            myBurning.AddFrame(9, 350);
         }
 
         public void SetUpMultiply()
@@ -118,47 +117,9 @@ namespace FWPGame
 
             public Sprite Spread()
             {
-
-                //  tree.myPosition = tree.myMapPosition - playerMapPos;
-
-                //    MapTile tile = tree.myGame.map.SpreadTile(Proximate());
-                //    SproutTree spread = new SproutTree(tree.myTexture, tree.myGame, tile.myPosition, tile.myMapPosition);
-                //    spread.Interact(tile);
-                //    Tree newTree = spread.NewTree;
-                //    if (newTree != null)
-                //    {
-                //        newTree.myState = new MultiplyState(newTree);
-                //    }
-                /*
-               
-               MapTile tile = tree.myGame.map.SpreadTile(new Vector2(0, 0));
-               tile.Clear();
-               GrassSprite newGrass = tree.myGame.myGrass.Clone();
-               tile.Add(newGrass);
-                 
-               Tree newTree = tree.Clone();
-               newTree.myState = new MultiplyState(newTree);
-               newTree.myMapPosition = tile.myMapPosition;
-               newTree.myPosition = tile.myPosition;
-               newTree.myScale = tile.myScale;
-
-               tile.Add(newTree); */
-
-
-                // MapTile tile = myGame.map.SpreadTile(new Vector2(100, 100));
-                // tile.Clear();
-
-                // newTree.myMapPosition = tile.myMapPosition;
-                // newTree.myPosition = tile.myPosition;
-                // newTree.myScale = tile.myScale;
-
-                // tile.mySprites.Add(newTree);
-
-                
-                    Tree newTree = tree.Clone();
-                    newTree.myState = new MultiplyState(newTree);
-                    return newTree;
-
+                Tree newTree = tree.Clone();
+                newTree.myState = new MultiplyState(newTree);
+                return newTree;
             }
 
             public void Update(double elapsedTime, Vector2 playerMapPos)
@@ -173,16 +134,9 @@ namespace FWPGame
                         tree.myAngle, tree.myOrigin, tree.myScale,
                         SpriteEffects.None, 0f);
             }
-
-            private Vector2 Proximate()
-            {
-                // @@@ fill in with randomized selection from 8 surrounding tiles
-
-                return new Vector2(tree.myMapPosition.X + Map.MAX_TILE_SIZE, tree.myMapPosition.Y);
-            }
-
-
         }
+
+
 
         // The Burning State
         class BurningState : State
@@ -198,13 +152,15 @@ namespace FWPGame
             // Determine whether this is a spreading conditition
             public Sprite Spread()
             {
-                return null;
+                Tree newTree = tree.Clone();
+                newTree.myState = new BurningState(newTree);
+                return newTree;
             }
 
             public void Update(double elapsedTime, Vector2 playerMapPos)
             {
                 bool seqDone = false;
-                tree.myAnimate.Update(elapsedTime, ref seqDone);
+                tree.myBurning.Update(elapsedTime, ref seqDone);
                 
                 if (seqDone)
                 {
@@ -214,11 +170,13 @@ namespace FWPGame
 
             public void Draw(SpriteBatch batch)
             {
-                batch.Draw(tree.myAnimate.GetImage(), tree.myPosition, null, Color.White, tree.myAngle,
+                batch.Draw(tree.myBurning.GetImage(), tree.myPosition, null, Color.White, tree.myAngle,
                         tree.myOrigin, tree.myScale,
                         SpriteEffects.None, 0f); 
             }
         }
+
+
 
         // The Burnt State
         class BurntState : State
@@ -249,6 +207,7 @@ namespace FWPGame
             }
 
         }
+
 
 
         // The Multiplying State

@@ -111,7 +111,7 @@ namespace FWPGame
                 Content.Load<Texture2D>("tree/squirrelplant/planttree_67")
             };
             motherTree = new Tree(Content.Load<Texture2D>("tree/tree"), new Vector2(0, 0), new Vector2(0, 0),
-                burnTreeSequence, Content.Load<Texture2D>("tree/burntTree"), multiplyTree, this);
+                burnTreeSequence, Content.Load<Texture2D>("tree/burntTree"), multiplyTree);
 
 
 
@@ -199,10 +199,13 @@ namespace FWPGame
                             
                             
                             map.SpreadTile(ref x, ref y);
-                            if (mapTiles[x, y].mySprites.Count == 0)
+                            if (mapTiles[x, y].mySprites.Count == 0  ||
+                                mapTiles[i, j].mySprites[s].name.Equals(mapTiles[x, y].mySprites[0].name))
                             {
                                 mapTiles[x, y].Add(newSprite);
-                            } 
+                            }
+                            
+                            
                         }
                     }
 

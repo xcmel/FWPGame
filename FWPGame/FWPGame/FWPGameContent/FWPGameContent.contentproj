@@ -164,7 +164,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="People\" />
+    <Compile Include="People\humanBurn.jpg">
+      <Name>humanBurn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="UI\treeicon.png">
@@ -539,6 +543,107 @@
     </Compile>
     <Compile Include="Tree\SquirrelPlant\planttree_9.jpg">
       <Name>planttree_9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="People\Build\build_0.jpg">
+      <Name>build_0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Build\build_1.jpg">
+      <Name>build_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Build\build_2.jpg">
+      <Name>build_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Build\build_3.jpg">
+      <Name>build_3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Build\build_4.jpg">
+      <Name>build_4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="People\Dig\dig_0.jpg">
+      <Name>dig_0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Dig\dig_1.jpg">
+      <Name>dig_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Dig\dig_2.jpg">
+      <Name>dig_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Dig\dig_3.jpg">
+      <Name>dig_3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Dig\dig_4.jpg">
+      <Name>dig_4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Dig\dig_5.jpg">
+      <Name>dig_5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="People\Electrocute\electrocute_0.jpg">
+      <Name>electrocute_0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Electrocute\electrocute_1.jpg">
+      <Name>electrocute_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Electrocute\electrocute_2.jpg">
+      <Name>electrocute_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Electrocute\electrocute_3.jpg">
+      <Name>electrocute_3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Electrocute\electrocute_4.jpg">
+      <Name>electrocute_4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Electrocute\electrocute_5.jpg">
+      <Name>electrocute_5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Electrocute\electrocute_6.jpg">
+      <Name>electrocute_6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="People\Electrocute\electrocute_7.jpg">
+      <Name>electrocute_7</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
