@@ -45,7 +45,7 @@ namespace FWPGame
 
         public override void Update(GameTime gameTime, Vector2 playerMapPos)
         {
-            myPosition = myMapPosition - playerMapPos;
+           // myPosition = myMapPosition - playerMapPos;
         }
 
         public override void Draw(SpriteBatch batch)

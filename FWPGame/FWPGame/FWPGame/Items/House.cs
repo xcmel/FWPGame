@@ -89,6 +89,12 @@ namespace FWPGame
                 house = sprite;
             }
 
+            // Determine whether this is a spreading conditition
+            public Sprite Spread()
+            {
+                return null;
+            }
+
             public void Update(double elapsedTime, Vector2 playerMapPos)
             {
 
@@ -113,6 +119,12 @@ namespace FWPGame
             public BurningState(House sprite)
             {
                 house = sprite;
+            }
+
+            // Determine whether this is a spreading conditition
+            public Sprite Spread()
+            {
+                return null;
             }
 
             public void Update(double elapsedTime, Vector2 playerMapPos)
@@ -141,6 +153,12 @@ namespace FWPGame
             public BurntState(House sprite)
             {
                 house = sprite;
+            }
+
+            // Determine whether this is a spreading conditition
+            public Sprite Spread()
+            {
+                return null;
             }
 
             public void Update(double elapsedTime, Vector2 playerMapPos)

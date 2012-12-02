@@ -13,10 +13,11 @@ namespace FWPGame.Engine
 {
     public class Map
     {
-        private const int MAX_TILE_SIZE = 64;
+        public const int MAX_TILE_SIZE = 64;
         private Vector2 myScreenSize;
         private Player myPlayer;
         private MapTile[,] mapTiles;
+        public MapTile[,] MapTiles { get { return mapTiles; } }
         private Vector2 myPosition;
         private Texture2D myTexture;
         private float myAngle = 0f;
@@ -87,6 +88,25 @@ namespace FWPGame.Engine
                 y = 0;
             MapTile tile = mapTiles[x, y];
             return tile;
+        }
+
+        /// <summary>
+        /// Get coordinates of MapTile to spread to - built-in safeguards to disallow index out of bounds exceptions.
+        /// </summary>
+        /// <returns></returns>
+        public void SpreadTile(ref int x, ref int y)
+        {
+            int tilesX = (int)mySize.X / MAX_TILE_SIZE;
+            int tilesY = (int)mySize.Y / MAX_TILE_SIZE;
+            
+            if (x >= tilesX)
+                x = tilesX - 1;
+            if (x < 0)
+                x = 0;
+            if (y >= tilesY)
+                y = tilesY - 1;
+            if (y < 0)
+                y = 0;
         }
 
         /// <summary>

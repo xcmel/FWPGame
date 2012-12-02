@@ -41,7 +41,7 @@ namespace FWPGame
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             Content.RootDirectory = "Content";
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false; // true;
         }
 
         /// <summary>
@@ -67,8 +67,7 @@ namespace FWPGame
             chiF = Content.Load<SpriteFont>("ChillerFont");
 
             myGrass = new GrassSprite(Content.Load<Texture2D>("grass"),
-                new Vector2(0, 0),
-                new Vector2(0, 0));
+                new Vector2(0, 0), new Vector2(0, 0));
 
             powers.Add(new GrowGrass(Content.Load<Texture2D>("UI/sprouts"), this, new Vector2(0, 0), new Vector2(0, 0)));
 
@@ -113,7 +112,7 @@ namespace FWPGame
 
             // TODO: Add your update logic here
             HandleInput();
-
+            Transmorg();
             cursor.Update(gameTime, worldScale);
             map.Update(gameTime, worldScale);
 

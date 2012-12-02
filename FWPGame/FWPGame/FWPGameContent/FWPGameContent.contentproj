@@ -201,6 +201,348 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Tree\SquirrelPlant\planttree_0.jpg">
+      <Name>planttree_0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_1.jpg">
+      <Name>planttree_1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_10.jpg">
+      <Name>planttree_10</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_11.jpg">
+      <Name>planttree_11</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_12.jpg">
+      <Name>planttree_12</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_13.jpg">
+      <Name>planttree_13</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_14.jpg">
+      <Name>planttree_14</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_15.jpg">
+      <Name>planttree_15</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_16.jpg">
+      <Name>planttree_16</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_17.jpg">
+      <Name>planttree_17</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_18.jpg">
+      <Name>planttree_18</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_19.jpg">
+      <Name>planttree_19</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_2.jpg">
+      <Name>planttree_2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_20.jpg">
+      <Name>planttree_20</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_21.jpg">
+      <Name>planttree_21</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_22.jpg">
+      <Name>planttree_22</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_23.jpg">
+      <Name>planttree_23</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_24.jpg">
+      <Name>planttree_24</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_25.jpg">
+      <Name>planttree_25</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_26.jpg">
+      <Name>planttree_26</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_27.jpg">
+      <Name>planttree_27</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_28.jpg">
+      <Name>planttree_28</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_29.jpg">
+      <Name>planttree_29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_3.jpg">
+      <Name>planttree_3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_30.jpg">
+      <Name>planttree_30</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_31.jpg">
+      <Name>planttree_31</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_32.jpg">
+      <Name>planttree_32</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_33.jpg">
+      <Name>planttree_33</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_34.jpg">
+      <Name>planttree_34</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_35.jpg">
+      <Name>planttree_35</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_36.jpg">
+      <Name>planttree_36</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_37.jpg">
+      <Name>planttree_37</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_38.jpg">
+      <Name>planttree_38</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_39.jpg">
+      <Name>planttree_39</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_4.jpg">
+      <Name>planttree_4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_40.jpg">
+      <Name>planttree_40</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_41.jpg">
+      <Name>planttree_41</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_42.jpg">
+      <Name>planttree_42</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_43.jpg">
+      <Name>planttree_43</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_44.jpg">
+      <Name>planttree_44</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_45.jpg">
+      <Name>planttree_45</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_46.jpg">
+      <Name>planttree_46</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_47.jpg">
+      <Name>planttree_47</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_48.jpg">
+      <Name>planttree_48</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_49.jpg">
+      <Name>planttree_49</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_5.jpg">
+      <Name>planttree_5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_50.jpg">
+      <Name>planttree_50</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_51.jpg">
+      <Name>planttree_51</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_52.jpg">
+      <Name>planttree_52</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_53.jpg">
+      <Name>planttree_53</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_54.jpg">
+      <Name>planttree_54</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_55.jpg">
+      <Name>planttree_55</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_56.jpg">
+      <Name>planttree_56</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_57.jpg">
+      <Name>planttree_57</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_58.jpg">
+      <Name>planttree_58</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_59.jpg">
+      <Name>planttree_59</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_6.jpg">
+      <Name>planttree_6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_60.jpg">
+      <Name>planttree_60</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_61.jpg">
+      <Name>planttree_61</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_62.jpg">
+      <Name>planttree_62</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_63.jpg">
+      <Name>planttree_63</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_64.jpg">
+      <Name>planttree_64</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_65.jpg">
+      <Name>planttree_65</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_66.jpg">
+      <Name>planttree_66</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_67.jpg">
+      <Name>planttree_67</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_7.jpg">
+      <Name>planttree_7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_8.jpg">
+      <Name>planttree_8</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Tree\SquirrelPlant\planttree_9.jpg">
+      <Name>planttree_9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -45,6 +45,20 @@ namespace FWPGame
             myPosition = position;
         }
 
+        // Determine whether this is a spreading conditition
+        public Sprite Spread()
+        {
+            // Let the state do its updating as well.
+            if (myState != null)
+            {
+                return myState.Spread();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         // This method is virtual because it can be overridden by the subclasses.  
         // In this method I will do the basic updating of my variables based on their
         // velocities.
@@ -83,6 +97,7 @@ namespace FWPGame
                 myState.Draw(batch);
             }
         }
+
 
         // This is a basic test for whether or not a sprite is off screen.
         public bool OutOfBounds()
