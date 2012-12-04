@@ -19,7 +19,6 @@ Content\Wood\logs.xnb
 Content\water.xnb
 Content\House\houseBurnt.xnb
 Content\House\houseFire.xnb
-Content\People\humanBurn.xnb
 Content\UI\treeicon.xnb
 Content\UI\icon.xnb
 Content\UI\sprouts.xnb
@@ -92,6 +91,7 @@ Content\Tree\SquirrelPlant\planttree_67.xnb
 Content\Tree\SquirrelPlant\planttree_7.xnb
 Content\Tree\SquirrelPlant\planttree_8.xnb
 Content\Tree\SquirrelPlant\planttree_9.xnb
+Content\People\humanBurn.xnb
 Content\People\Dig\dig_0.xnb
 Content\People\Dig\dig_1.xnb
 Content\People\Dig\dig_2.xnb

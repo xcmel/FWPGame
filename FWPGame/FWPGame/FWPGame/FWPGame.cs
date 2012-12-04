@@ -44,7 +44,7 @@ namespace FWPGame
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             Content.RootDirectory = "Content";
-            graphics.IsFullScreen = false; // true;
+            graphics.IsFullScreen = true;
         }
 
         /// <summary>

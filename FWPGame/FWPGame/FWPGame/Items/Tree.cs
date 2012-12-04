@@ -98,7 +98,7 @@ namespace FWPGame.Items
             // Prepare the flip book sequence for multiply Animate
             for (int i = 0; i < 68; ++i)
             {
-                myMultiply.AddFrame(i, 100);
+                myMultiply.AddFrame(i, 1000);
             }
         }
 
