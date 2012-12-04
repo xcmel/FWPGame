@@ -217,6 +217,7 @@ namespace FWPGame
                             if (mapTiles[x, y].mySprites.Count == 0  ||
                                 mapTiles[i, j].mySprites[s].name.Equals(mapTiles[x, y].mySprites[0].name))
                             {
+                                mapTiles[x, y].Add(myGrass.Clone());
                                 mapTiles[x, y].Add(newSprite);
                             }
                             
