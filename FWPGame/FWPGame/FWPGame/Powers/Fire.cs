@@ -49,6 +49,7 @@ namespace FWPGame.Powers
             {
                 MethodInfo myMethod = spriteToBurn.GetType().GetMethod("burn");
                 myMethod.Invoke(spriteToBurn, null);
+                tile.mySprites.RemoveAt(0);
             }
                  
         }
