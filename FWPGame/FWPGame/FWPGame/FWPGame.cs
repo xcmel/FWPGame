@@ -11,6 +11,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using FWPGame.Engine;
 using FWPGame.Powers;
+using FWPGame.Items;
+using FWPGame.Events;
 using System.Collections;
 
 
@@ -31,6 +33,7 @@ namespace FWPGame
         public Player player;
         private Cursor cursor;
         private Vector2 tempMapSize = new Vector2(1200, 1200);
+        private Apocalypse myApocalypse;
         protected internal ArrayList powers = new ArrayList();
         public Vector2 worldScale;
 
@@ -69,13 +72,36 @@ namespace FWPGame
             myGrass = new GrassSprite(Content.Load<Texture2D>("grass"),
                 new Vector2(0, 0), new Vector2(0, 0));
 
-            powers.Add(new GrowGrass(Content.Load<Texture2D>("UI/sprouts"), this, new Vector2(0, 0), new Vector2(0, 0)));
+            //Kill the game with Escape
+            GameAction closeGame = new GameAction(this, this.GetType().GetMethod("ExitGame"), new object[0]);
+            InputManager.AddToKeyboardMap(Keys.Escape, closeGame);
+
+            GrowGrass grassPower = new GrowGrass(Content.Load<Texture2D>("UI/sprouts"), this, new Vector2(0, 0), new Vector2(0, 0));
+            powers.Add(grassPower);
+            sproutTree = new SproutTree(Content.Load<Texture2D>("UI/treeicon"), this, new Vector2(0, 0), new Vector2(0, 0));
+            powers.Add(sproutTree);
+            Fire fire = new Fire(Content.Load<Texture2D>("UI/fireicon"), this, new Vector2(0, 0), new Vector2(0, 0));
+            powers.Add(fire);
+            BuildHouse housePower = new BuildHouse(Content.Load<Texture2D>("UI/house_icon"), this, new Vector2(0, 0), new Vector2(0, 0));
+            powers.Add(housePower);
+
+            Protect protect = new Protect(Content.Load<Texture2D>("UI/protect"), this, new Vector2(0, 0), new Vector2(0, 0));
+
+            Dictionary<string, Power> myPowers = new Dictionary<string, Power>();
+            myPowers.Add("grass", grassPower);
+            myPowers.Add("sprout", sproutTree);
+            myPowers.Add("fire", fire);
+            myPowers.Add("house", housePower);
+            
+            List<Power> availablePowers = new List<Power>();
+            availablePowers.Add(protect);
+            
 
             cursor = new Cursor(Content.Load<Texture2D>("cursor"), new Vector2(0,0), this, powers);
-            player = new Player(Content.Load<Texture2D>("UI/icon"), chiF, new Vector2(0, 0),
+            player = new Player(Content.Load<Texture2D>("UI/icon"), Content.Load<Texture2D>("UI/iconBG"), chiF, new Vector2(0, 0),
                 new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
                 tempMapSize,
-                cursor, powers);
+                cursor, powers, availablePowers);
 
             map = new Map(Content.Load<Texture2D>("Maps/Mars/marsorbit"),
                 new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
@@ -88,6 +114,10 @@ namespace FWPGame
 
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2,
                 graphics.GraphicsDevice.Viewport.Height / 2);
+
+            myApocalypse = new Apocalypse(this, myPowers);
+            //myApocalypse.BuildVillage();
+
         }
 
         /// <summary>
@@ -113,17 +143,26 @@ namespace FWPGame
             // TODO: Add your update logic here
             HandleInput();
             Transmorg();
-            cursor.Update(gameTime, worldScale);
+
             map.Update(gameTime, worldScale);
+            cursor.Update(gameTime, worldScale);
+            //myApocalypse.Update(gameTime.TotalGameTime.Seconds, player.myMapPosition);
 
             base.Update(gameTime);
         }
 
         private void HandleInput()
         {
+            if (this.IsActive == true)
+            {
+                InputManager.ActKeyboard(Keyboard.GetState());
+                InputManager.ActMouse(Mouse.GetState());
+            }
+        }
 
-            InputManager.ActKeyboard(Keyboard.GetState());
-            InputManager.ActMouse(Mouse.GetState());
+        public void ExitGame()
+        {
+            this.Exit();
         }
 
 
@@ -139,8 +178,9 @@ namespace FWPGame
 
 
             map.Draw(spriteBatch);
-            cursor.Draw(spriteBatch);
             player.Draw(spriteBatch);
+            cursor.Draw(spriteBatch);
+            //myApocalypse.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);

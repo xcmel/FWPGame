@@ -18,7 +18,7 @@ using FWPGame.Engine;
 namespace FWPGame.Powers
 {
 
-    class Power
+    public class Power
     {
         protected internal Vector2 myPosition;
         protected internal Vector2 myMapPosition;

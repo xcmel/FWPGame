@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Storage;
 using System.Collections;
 using System.Diagnostics;
 
-namespace FWPGame
+namespace FWPGame.Items
 {
     public class House : Sprite
     {

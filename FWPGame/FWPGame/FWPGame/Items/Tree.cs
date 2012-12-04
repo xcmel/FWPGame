@@ -15,7 +15,7 @@ using FWPGame.Powers;
 using System.Collections;
 using System.Diagnostics;
 
-namespace FWPGame
+namespace FWPGame.Items
 {
     public class Tree : Sprite
     {

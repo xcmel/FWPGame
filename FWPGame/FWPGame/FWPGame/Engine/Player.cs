@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
@@ -56,15 +57,19 @@ namespace FWPGame.Engine
         protected internal Cursor myCursor;
         protected internal Vector2 myMapSize;
         private ArrayList myPowers;
+        protected internal List<Power> availablePowers;
         private Power mySelectedPower;
         private const int MAX_POWER_HOTKEYS = 5;
 
         private Texture2D myIcon;
+        private Texture2D myIconBG;
         private SpriteFont myFont;
 
-        public Player(Texture2D icon, SpriteFont font, Vector2 mapPos, Vector2 screenSize,
-            Vector2 mapSize, Cursor cursor, ArrayList powers)
+        public Player(Texture2D icon, Texture2D iconBG, SpriteFont font, Vector2 mapPos, Vector2 screenSize,
+            Vector2 mapSize, Cursor cursor, ArrayList powers, List<Power> avPowers)
         {
+            myIconBG = iconBG;
+            availablePowers = avPowers;
             mySelectedPower = (Power)powers[0];
             myIcon = icon;
             myFont = font;
@@ -232,7 +237,7 @@ namespace FWPGame.Engine
         }
 
         /// <summary>
-        /// Draw the pseudo-UI - the power hotkeys - with a gray fill-in for the selected one.
+        /// Draw the pseudo-UI - the power hotkeys - with a white fill-in for the selected one.
         /// </summary>
         /// <param name="batch"></param>
         public void Draw(SpriteBatch batch)
@@ -241,7 +246,7 @@ namespace FWPGame.Engine
             textPos.Y = myScreenSize.Y - 25;
             Vector2 iconPos = new Vector2(0,0);
             iconPos.Y = myScreenSize.Y - 129;
-            
+
 
             int f = myPowers.Count;
             iconPos.X = (myScreenSize.X / 2) - (129*(f/2));
@@ -249,16 +254,20 @@ namespace FWPGame.Engine
             for (int i = 0; i < f; i++)
             {
                 Power p = (Power)myPowers[i];
-                batch.Draw(p.myIcon, iconPos, null, Color.White, myAngle, myOrigin, myScale,
-                    SpriteEffects.None, 0f);
                 if (p.Equals(mySelectedPower))
                 {
-                    batch.Draw(myIcon, iconPos, null, Color.Gray, myAngle, myOrigin, myScale, SpriteEffects.None, 0f);
+                    batch.Draw(myIconBG, new Vector2(iconPos.X+1, iconPos.Y-1), null, Color.White, myAngle, myOrigin, myScale, SpriteEffects.None, 0f);
+                    batch.Draw(p.myIcon, iconPos, null, Color.White, myAngle, myOrigin, myScale,
+    SpriteEffects.None, 0f);
+                    batch.Draw(myIcon, iconPos, null, Color.White, myAngle, myOrigin, myScale, SpriteEffects.None, 0f);
                 }
                 else
                 {
-                batch.Draw(myIcon, iconPos, null, Color.White, myAngle, myOrigin, myScale,
+                    batch.Draw(myIconBG, new Vector2(iconPos.X + 1, iconPos.Y-1), null, Color.Gray, myAngle, myOrigin, myScale,
                     SpriteEffects.None, 0f);
+                batch.Draw(p.myIcon, iconPos, null, Color.White, myAngle, myOrigin, myScale,
+                    SpriteEffects.None, 0f);
+                batch.Draw(myIcon, iconPos, null, Color.Gray, myAngle, myOrigin, myScale, SpriteEffects.None, 0f);
                 }
                 batch.DrawString(myFont, "" + (i+1), textPos, Color.Black);
                 iconPos.X += 129;

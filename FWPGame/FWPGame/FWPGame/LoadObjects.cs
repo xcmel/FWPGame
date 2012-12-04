@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using FWPGame.Engine;
 using FWPGame.Powers;
+using FWPGame.Items;
 using System.Collections;
 
 
@@ -20,6 +21,8 @@ namespace FWPGame
     {
         protected internal Tree motherTree;
         protected internal House motherHouse;
+        protected internal Tornado motherTornado;
+        protected internal Halo motherHalo;
         protected internal List<Sprite> transObj = new List<Sprite>();
         private SproutTree sproutTree;
 
@@ -133,11 +136,23 @@ namespace FWPGame
             motherHouse = new House(Content.Load<Texture2D>("house/house"), new Vector2(0, 0), new Vector2(0, 0),
                 burnHouseSequence, Content.Load<Texture2D>("house/houseBurnt"));
 
-            sproutTree = new SproutTree(Content.Load<Texture2D>("UI/treeicon"), this, new Vector2(0, 0), new Vector2(0, 0));
-            powers.Add(sproutTree);
-            powers.Add(new Fire(Content.Load<Texture2D>("UI/fireicon"), this, new Vector2(0, 0), new Vector2(0, 0)));
-            powers.Add(new BuildHouse(Content.Load<Texture2D>("UI/home"), this, new Vector2(0, 0), new Vector2(0, 0)));
+            Texture2D[] spinTornadoSequence = {
+                Content.Load<Texture2D>("Tornado/tor_00"),
+                Content.Load<Texture2D>("Tornado/tor_01"),
+                Content.Load<Texture2D>("Tornado/tor_02"),
+                Content.Load<Texture2D>("Tornado/tor_03"),
+                Content.Load<Texture2D>("Tornado/tor_04"),
+                Content.Load<Texture2D>("Tornado/tor_05"),
+                Content.Load<Texture2D>("Tornado/tor_06"),
+                Content.Load<Texture2D>("Tornado/tor_07"),
+                Content.Load<Texture2D>("Tornado/tor_08"),
+                Content.Load<Texture2D>("Tornado/tor_09"),
+                Content.Load<Texture2D>("Tornado/tor_10"),
+                Content.Load<Texture2D>("Tornado/tor_11"),
+                Content.Load<Texture2D>("Tornado/tor_12")};
 
+            motherTornado = new Tornado(spinTornadoSequence, new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0));
+            motherHalo = new Halo(Content.Load<Texture2D>("Protect/bubble"), new Vector2(0, 0), new Vector2(0, 0));
         }
 
         //public ArrayList SproutTreeTextures()

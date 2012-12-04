@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using FWPGame.Engine;
+using FWPGame.Items;
 using System.Collections;
 
 namespace FWPGame.Powers
@@ -30,7 +31,6 @@ namespace FWPGame.Powers
 
         public override void Interact(MapTile tile)
         {
-            tile.Clear();
             tile.Add(game.myGrass.Clone());            
         }
 

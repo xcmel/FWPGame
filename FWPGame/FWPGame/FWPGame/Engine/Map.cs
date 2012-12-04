@@ -91,6 +91,29 @@ namespace FWPGame.Engine
         }
 
         /// <summary>
+        /// Get the MapTile at the specified position - built in safeguards to disallow index out of bounds exceptions.
+        /// </summary>
+        /// <param name="mapPosition"></param>
+        /// <returns></returns>
+        public MapTile GetTile(Vector2 mapPosition)
+        {
+            int tilesX = (int)mySize.X / MAX_TILE_SIZE;
+            int tilesY = (int)mySize.Y / MAX_TILE_SIZE;
+            int x = (int)mapPosition.X / MAX_TILE_SIZE;
+            int y = (int)mapPosition.Y / MAX_TILE_SIZE;
+            if (x >= tilesX)
+                x = tilesX - 1;
+            if (x < 0)
+                x = 0;
+            if (y >= tilesY)
+                y = tilesY - 1;
+            if (y < 0)
+                y = 0;
+            MapTile tile = mapTiles[x, y];
+            return tile;
+        }
+
+        /// <summary>
         /// Get coordinates of MapTile to spread to - built-in safeguards to disallow index out of bounds exceptions.
         /// </summary>
         /// <returns></returns>
@@ -146,14 +169,14 @@ namespace FWPGame.Engine
 
             // We only want to render the map tiles that are visible, so we need to find which ones the player can see
             var x = (int)Math.Floor((myPlayer.myMapPosition.X / (MAX_TILE_SIZE)));
-            var xmax = (int)Math.Floor((myPlayer.myMapPosition.X + myScreenSize.X) / (MAX_TILE_SIZE));
+            var xmax = (int)Math.Floor((myPlayer.myMapPosition.X + myScreenSize.X) / (MAX_TILE_SIZE))+1;
             var y = (int)Math.Floor((myPlayer.myMapPosition.Y) / (MAX_TILE_SIZE));
-            var ymax = (int)Math.Floor((myPlayer.myMapPosition.Y + myScreenSize.Y) / (MAX_TILE_SIZE));
+            var ymax = (int)Math.Floor((myPlayer.myMapPosition.Y + myScreenSize.Y) / (MAX_TILE_SIZE))+1;
 
-            if (xmax >= mapTiles.GetLength(0))
-                xmax = mapTiles.GetLength(0) - 1;
-            if (ymax >= mapTiles.GetLength(1))
-                ymax = mapTiles.GetLength(1) - 1;
+            if (xmax > mapTiles.GetLength(0))
+                xmax = mapTiles.GetLength(0);
+            if (ymax > mapTiles.GetLength(1))
+                ymax = mapTiles.GetLength(1);
 
             int xToRender = (int)Math.Floor(myScreenSize.X / MAX_TILE_SIZE);
             int yToRender = (int)Math.Floor(myScreenSize.Y / MAX_TILE_SIZE);
