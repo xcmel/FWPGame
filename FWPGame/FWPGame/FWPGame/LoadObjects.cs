@@ -176,7 +176,7 @@ namespace FWPGame
 
             for (int i = 0; i < mapTiles.GetLength(0); ++i)
             {
-                if (decision.NextDouble() > 0.45)
+                if (decision.NextDouble() < 0.65)
                 {
                     continue;
                 }
@@ -188,10 +188,14 @@ namespace FWPGame
                     }
                     for (int s = 0; s < mapTiles[i, j].mySprites.Count; ++s)
                     {
+                        if (decision.NextDouble() > 0.4)
+                        {
+                            continue;
+                        }
                         Sprite newSprite = mapTiles[i, j].mySprites[s].Spread();
                         if (newSprite != null)
                         {
-                            if (decision.NextDouble() > 0.5)
+                            if (decision.NextDouble() < 0.5)
                             {
                                 x = i + (int)Math.Round(decision.NextDouble());
                                 y = j + (int)Math.Round(decision.NextDouble());
@@ -201,7 +205,7 @@ namespace FWPGame
                                 x = i - (int)Math.Round(decision.NextDouble());
                                 y = j - (int)Math.Round(decision.NextDouble());
                             }
-                            else if (decision.NextDouble() > 0.5)
+                            else if (decision.NextDouble() < 0.5)
                             {
                                 x = i + (int)Math.Round(decision.NextDouble());
                                 y = j - (int)Math.Round(decision.NextDouble());

@@ -191,7 +191,9 @@ namespace FWPGame.Items
             // Determine whether this is a spreading conditition
             public Sprite Spread()
             {
-                return null;
+                Tree newTree = tree.Clone();
+                newTree.myState = new MultiplyState(newTree);
+                return newTree;
             }
 
             public void Update(double elapsedTime, Vector2 playerMapPos)

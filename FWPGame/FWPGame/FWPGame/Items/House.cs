@@ -110,7 +110,9 @@ namespace FWPGame.Items
             // Determine whether this is a spreading conditition
             public Sprite Spread()
             {
-                return null;
+                House newHouse = house.Clone();
+                newHouse.myState = new RegularState(newHouse);
+                return newHouse;
             }
 
             public void Update(double elapsedTime, Vector2 playerMapPos)
@@ -142,7 +144,9 @@ namespace FWPGame.Items
             // Determine whether this is a spreading conditition
             public Sprite Spread()
             {
-                return null;
+                House newHouse = house.Clone();
+                newHouse.myState = new BurningState(newHouse);
+                return newHouse;
             }
 
             public void Update(double elapsedTime, Vector2 playerMapPos)
@@ -176,7 +180,9 @@ namespace FWPGame.Items
             // Determine whether this is a spreading conditition
             public Sprite Spread()
             {
-                return null;
+                House newHouse = house.Clone();
+                newHouse.myState = new RegularState(newHouse);
+                return newHouse;
             }
 
             public void Update(double elapsedTime, Vector2 playerMapPos)
