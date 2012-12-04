@@ -27,7 +27,7 @@ namespace FWPGame.Powers
 
         public override void Interact(MapTile tile)
         {
-            bool grassFound = false;
+            //bool grassFound = false;
             bool hasProtect = false;
             bool hasFeature = false;
             if (tile.mySprites.Count > 0)
@@ -38,7 +38,7 @@ namespace FWPGame.Powers
                     {
                         if (s.name.Equals("GrassSprite"))
                         {
-                            grassFound = true;
+                            //grassFound = true;
                         }
                         if (s.name.Equals("House") || s.name.Equals("Tree"))
                         {

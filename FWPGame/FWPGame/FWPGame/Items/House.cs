@@ -58,24 +58,42 @@ namespace FWPGame.Items
         public void SetUpAnimate()
         {
             // Prepare the flip book sequence for expected Animate
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(1, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(2, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(3, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(4, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(5, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(6, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(7, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(8, 50);
-            myAnimate.AddFrame(0, 100);
-            myAnimate.AddFrame(9, 50);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(1, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(2, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(3, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(4, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(5, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(6, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(7, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(8, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(9, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(1, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(2, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(3, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(4, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(5, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(6, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(7, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(8, 1000);
+            myAnimate.AddFrame(0, 2900);
+            myAnimate.AddFrame(9, 1000);
         }
 
 

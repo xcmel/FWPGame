@@ -71,26 +71,26 @@ namespace FWPGame.Items
         public void SetUpBurning()
         {
             // Prepare the flip book sequence for expected Animate
-            myBurning.AddFrame(0, 100);
-            myBurning.AddFrame(1, 300);
-            myBurning.AddFrame(2, 200);
-            myBurning.AddFrame(3, 250);
-            myBurning.AddFrame(4, 150);
-            myBurning.AddFrame(5, 90);
-            myBurning.AddFrame(6, 310);
-            myBurning.AddFrame(7, 200);
-            myBurning.AddFrame(8, 110);
-            myBurning.AddFrame(9, 350);
-            myBurning.AddFrame(0, 100);
-            myBurning.AddFrame(1, 300);
-            myBurning.AddFrame(2, 200);
-            myBurning.AddFrame(3, 250);
-            myBurning.AddFrame(4, 150);
-            myBurning.AddFrame(5, 90);
-            myBurning.AddFrame(6, 310);
-            myBurning.AddFrame(7, 200);
-            myBurning.AddFrame(8, 110);
-            myBurning.AddFrame(9, 350);
+            myBurning.AddFrame(0, 1000);
+            myBurning.AddFrame(1, 3000);
+            myBurning.AddFrame(2, 2000);
+            myBurning.AddFrame(3, 2500);
+            myBurning.AddFrame(4, 1500);
+            myBurning.AddFrame(5, 900);
+            myBurning.AddFrame(6, 3100);
+            myBurning.AddFrame(7, 2000);
+            myBurning.AddFrame(8, 1100);
+            myBurning.AddFrame(9, 3500);
+            myBurning.AddFrame(0, 1000);
+            myBurning.AddFrame(1, 3000);
+            myBurning.AddFrame(2, 2000);
+            myBurning.AddFrame(3, 2500);
+            myBurning.AddFrame(4, 1500);
+            myBurning.AddFrame(5, 900);
+            myBurning.AddFrame(6, 3100);
+            myBurning.AddFrame(7, 2000);
+            myBurning.AddFrame(8, 1100);
+            myBurning.AddFrame(9, 3500);
         }
 
         public void SetUpMultiply()
