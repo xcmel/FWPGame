@@ -79,10 +79,13 @@
     <Compile Include="Engine\GameAction.cs" />
     <Compile Include="Engine\InputManager.cs" />
     <Compile Include="Engine\MapTile.cs" />
+    <Compile Include="Events\Apocalypse.cs" />
     <Compile Include="Items\GrassSprite.cs" />
     <Compile Include="Engine\Map.cs" />
     <Compile Include="Engine\Player.cs" />
+    <Compile Include="Items\Halo.cs" />
     <Compile Include="Items\House.cs" />
+    <Compile Include="Items\Tornado.cs" />
     <Compile Include="LoadObjects.cs" />
     <Compile Include="Items\People.cs" />
     <Compile Include="Powers\BuildHouse.cs" />
