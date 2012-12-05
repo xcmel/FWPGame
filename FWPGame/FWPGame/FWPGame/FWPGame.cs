@@ -30,9 +30,12 @@ namespace FWPGame
         public GrassSprite myGrass;
         public Player player;
         private Cursor cursor;
-        private Vector2 tempMapSize = new Vector2(1200, 1200);
+        private Vector2 tempMapSize = new Vector2(1024, 768);
         protected internal ArrayList powers = new ArrayList();
         public Vector2 worldScale;
+
+        private SoundEffect mainMusic;
+        private SoundEffectInstance mainMusicInstance;
 
 
         public FWPGame()
@@ -41,7 +44,7 @@ namespace FWPGame
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             Content.RootDirectory = "Content";
-            graphics.IsFullScreen = false; // true;
+            graphics.IsFullScreen = true;
         }
 
         /// <summary>
@@ -69,6 +72,7 @@ namespace FWPGame
             myGrass = new GrassSprite(Content.Load<Texture2D>("grass"),
                 new Vector2(0, 0), new Vector2(0, 0));
 
+
             powers.Add(new GrowGrass(Content.Load<Texture2D>("UI/sprouts"), this, new Vector2(0, 0), new Vector2(0, 0)));
 
             cursor = new Cursor(Content.Load<Texture2D>("cursor"), new Vector2(0,0), this, powers);
@@ -88,6 +92,11 @@ namespace FWPGame
 
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2,
                 graphics.GraphicsDevice.Viewport.Height / 2);
+
+            mainMusic = Content.Load<SoundEffect>("Sound/mainMusic");
+            mainMusicInstance = mainMusic.CreateInstance();
+            mainMusicInstance.IsLooped = true;
+            mainMusicInstance.Play();
         }
 
         /// <summary>

@@ -20,13 +20,14 @@ namespace FWPGame
     {
         protected internal Tree motherTree;
         protected internal House motherHouse;
+        protected internal People person;
         protected internal List<Sprite> transObj = new List<Sprite>();
         private SproutTree sproutTree;
+        private MakePerson makePerson;
 
         //
         protected void LoadObjects()
-        {  
-            
+        {            
             // Create a Tree instance
             Texture2D[] burnTreeSequence = {
                 Content.Load<Texture2D>("burning/burn_0"),
@@ -111,9 +112,9 @@ namespace FWPGame
                 Content.Load<Texture2D>("tree/squirrelplant/planttree_67")
             };
             motherTree = new Tree(Content.Load<Texture2D>("tree/tree"), new Vector2(0, 0), new Vector2(0, 0),
-                burnTreeSequence, Content.Load<Texture2D>("tree/burntTree"), multiplyTree);
+                burnTreeSequence, Content.Load<Texture2D>("tree/burntTree"), Content.Load<Texture2D>("tree/burntTree"), multiplyTree);
 
-
+            person = new People(Content.Load<Texture2D>("people/person"), new Vector2(0,0), new Vector2(0,0), null, Content.Load<Texture2D>("people/humanBurn"), Content.Load<Texture2D>("people/electrocute/electrocute_7"));
 
 
             // Create a House instance
@@ -131,12 +132,15 @@ namespace FWPGame
                 Content.Load<Texture2D>("burning/burn_9")
             };
             motherHouse = new House(Content.Load<Texture2D>("house/house"), new Vector2(0, 0), new Vector2(0, 0),
-                burnHouseSequence, Content.Load<Texture2D>("house/houseBurnt"));
-
+                burnHouseSequence, Content.Load<Texture2D>("house/houseBurnt"), Content.Load<Texture2D>("house/houseLit"));
+            makePerson = new MakePerson(Content.Load<Texture2D>("people/person"), this, new Vector2(0,0), new Vector2(0, 0));
             sproutTree = new SproutTree(Content.Load<Texture2D>("UI/treeicon"), this, new Vector2(0, 0), new Vector2(0, 0));
+
+            powers.Add(makePerson);
             powers.Add(sproutTree);
             powers.Add(new Fire(Content.Load<Texture2D>("UI/fireicon"), this, new Vector2(0, 0), new Vector2(0, 0)));
             powers.Add(new BuildHouse(Content.Load<Texture2D>("UI/home"), this, new Vector2(0, 0), new Vector2(0, 0)));
+            powers.Add(new Electric(Content.Load<Texture2D>("UI/electric"), this, new Vector2(0,0), new Vector2(0,0)));
 
         }
 

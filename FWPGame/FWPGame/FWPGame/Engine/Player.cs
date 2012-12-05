@@ -57,7 +57,7 @@ namespace FWPGame.Engine
         protected internal Vector2 myMapSize;
         private ArrayList myPowers;
         private Power mySelectedPower;
-        private const int MAX_POWER_HOTKEYS = 5;
+        private const int MAX_POWER_HOTKEYS = 6;
 
         private Texture2D myIcon;
         private SpriteFont myFont;
@@ -170,7 +170,7 @@ namespace FWPGame.Engine
 
             #region Power Selection Hotkeys
 
-            Keys[] possibleHotkeys = { Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5 };
+            Keys[] possibleHotkeys = { Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5, Keys.D6 };
             for (int i = 0; i < MAX_POWER_HOTKEYS; i++)
             {
                 object[] param = new object[1];

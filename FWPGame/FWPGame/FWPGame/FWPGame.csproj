@@ -86,8 +86,10 @@
     <Compile Include="LoadObjects.cs" />
     <Compile Include="Items\People.cs" />
     <Compile Include="Powers\BuildHouse.cs" />
+    <Compile Include="Powers\Electric.cs" />
     <Compile Include="Powers\Fire.cs" />
     <Compile Include="Powers\GrowGrass.cs" />
+    <Compile Include="Powers\MakePerson.cs" />
     <Compile Include="Powers\Power.cs" />
     <Compile Include="Powers\SproutTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

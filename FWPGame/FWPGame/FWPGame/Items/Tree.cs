@@ -22,12 +22,13 @@ namespace FWPGame
         private Texture2D[] myBurningSequence;
         private Animate myBurning;
         private Texture2D myBurnt;
+        private Texture2D myElectrocute;
         private Texture2D[] myMultiplySequence;
         private Animate myMultiply;
 
 
         public Tree(Texture2D texture, Vector2 position, Vector2 mapPosition,
-            Texture2D[] burningSequence, Texture2D burnt, Texture2D[] multiplyTree) :
+            Texture2D[] burningSequence, Texture2D burnt, Texture2D electrocute, Texture2D[] multiplyTree) :
             base(texture, position)
         {
             myMapPosition = mapPosition;
@@ -36,6 +37,7 @@ namespace FWPGame
             myBurning = new Animate(burningSequence);
             SetUpBurning();
             myBurnt = burnt;
+            myElectrocute = electrocute;
             myMultiplySequence = multiplyTree;
             myMultiply = new Animate(multiplyTree);
             SetUpMultiply();
@@ -46,13 +48,18 @@ namespace FWPGame
         public Tree Clone()
         {
             return new Tree(this.myTexture, new Vector2(0, 0), new Vector2(0, 0),
-                myBurningSequence, myBurnt, myMultiplySequence);
+                myBurningSequence, myBurnt, myElectrocute, myMultiplySequence);
         }
 
 
         public void burn()
         {
             myState = new BurningState(this);
+        }
+
+        public void electrocute()
+        {
+            myState = new ElectricState(this);
         }
 
 
@@ -206,6 +213,35 @@ namespace FWPGame
                     SpriteEffects.None, 0f);
             }
 
+        }
+
+        //electric state
+        class ElectricState : State
+        {
+            private Tree tree;
+
+            public ElectricState(Tree sprite)
+            {
+                tree = sprite;
+            }
+
+            // Determine whether this is a spreading conditition
+            public Sprite Spread()
+            {
+                return null;
+            }
+
+            public void Update(double elapsedTime, Vector2 playerMapPos)
+            {
+            }
+
+            public void Draw(SpriteBatch batch)
+            {
+                batch.Draw(tree.myElectrocute, tree.myPosition,
+                    null, Color.White,
+                    tree.myAngle, tree.myOrigin, tree.myScale,
+                    SpriteEffects.None, 0f);
+            }
         }
 
 
