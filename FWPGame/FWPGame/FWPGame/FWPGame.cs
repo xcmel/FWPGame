@@ -117,7 +117,7 @@ namespace FWPGame
             FontPos = new Vector2(graphics.GraphicsDevice.Viewport.Width / 2,
                 graphics.GraphicsDevice.Viewport.Height / 2);
 
-            //myApocalypse = new Apocalypse(this, myPowers);
+            myApocalypse = new Apocalypse(this, myPowers);
             //myApocalypse.BuildVillage();
 
 
