@@ -94,6 +94,7 @@
     <Compile Include="Powers\GrowGrass.cs" />
     <Compile Include="Powers\MakePerson.cs" />
     <Compile Include="Powers\Power.cs" />
+    <Compile Include="Powers\Protect.cs" />
     <Compile Include="Powers\SproutTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
