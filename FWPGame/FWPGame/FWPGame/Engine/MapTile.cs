@@ -17,6 +17,7 @@ namespace FWPGame.Engine
 
         protected internal Vector2 myMapPosition;
         protected internal Vector2 myPosition;
+        protected internal List<People> myPeople = new List<People>();
         protected internal List<Sprite> mySprites = new List<Sprite>();
         protected internal Vector2 mySize;
         protected internal Vector2 myScale = new Vector2(1f, 1f);

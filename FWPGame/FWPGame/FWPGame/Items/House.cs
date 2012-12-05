@@ -20,8 +20,10 @@ namespace FWPGame.Items
         private Texture2D[] myAnimateSequence;
         private Animate myAnimate;
         private Texture2D myBurnt;
+        private Texture2D myLit;
 
-        public House(Texture2D texture, Vector2 position, Vector2 mapPosition, Texture2D[] animateSequence, Texture2D burnt) :
+        public House(Texture2D texture, Vector2 position, Vector2 mapPosition, Texture2D[] animateSequence, Texture2D burnt,
+            Texture2D lit) :
             base(texture, position)
         {
             myMapPosition = mapPosition;
@@ -30,18 +32,24 @@ namespace FWPGame.Items
             myAnimate = new Animate(animateSequence);
             SetUpAnimate();
             myBurnt = burnt;
+            myLit = lit;
             myState = new RegularState(this);
         }
 
         public House Clone()
         {
-            return new House(this.myTexture, new Vector2(0, 0), new Vector2(0, 0), myAnimateSequence, myBurnt);
+            return new House(this.myTexture, new Vector2(0, 0), new Vector2(0, 0), myAnimateSequence, myBurnt, myLit);
         }
 
 
         public void burn()
         {
             myState = new BurningState(this);
+        }
+
+        public void electrocute()
+        {
+            myState = new ElectricState(this);
         }
 
         public void setMyPosition(Vector2 pos)
@@ -196,7 +204,35 @@ namespace FWPGame.Items
                     house.myAngle, house.myOrigin, house.myScale,
                     SpriteEffects.None, 0f);
             }
+        }
 
+        //electric state
+        class ElectricState : State
+        {
+            private House house;
+
+            public ElectricState(House sprite)
+            {
+                house = sprite;
+            }
+
+            // Determine whether this is a spreading conditition
+            public Sprite Spread()
+            {
+                return null;
+            }
+
+            public void Update(double elapsedTime, Vector2 playerMapPos)
+            {
+            }
+
+            public void Draw(SpriteBatch batch)
+            {
+                batch.Draw(house.myLit, house.myPosition,
+                    null, Color.White,
+                    house.myAngle, house.myOrigin, house.myScale,
+                    SpriteEffects.None, 0f);
+            }
         }
     }
 }
