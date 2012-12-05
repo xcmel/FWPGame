@@ -22,7 +22,8 @@ namespace FWPGame
         private Texture2D myBurnt;
         private Texture2D myLit;
 
-        public House(Texture2D texture, Vector2 position, Vector2 mapPosition, Texture2D[] animateSequence, Texture2D burnt, Texture2D lit) :
+        public House(Texture2D texture, Vector2 position, Vector2 mapPosition, Texture2D[] animateSequence, Texture2D burnt,
+            Texture2D lit) :
             base(texture, position)
         {
             myMapPosition = mapPosition;
