@@ -47,7 +47,7 @@ namespace FWPGame
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             Content.RootDirectory = "Content";
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false; // true;
         }
 
         /// <summary>
@@ -78,8 +78,6 @@ namespace FWPGame
             GameAction closeGame = new GameAction(this, this.GetType().GetMethod("ExitGame"), new object[0]);
             InputManager.AddToKeyboardMap(Keys.Escape, closeGame);
 
-
- /*
             GrowGrass grassPower = new GrowGrass(Content.Load<Texture2D>("UI/sprouts"), this, new Vector2(0, 0), new Vector2(0, 0));
             powers.Add(grassPower);
             sproutTree = new SproutTree(Content.Load<Texture2D>("UI/treeicon"), this, new Vector2(0, 0), new Vector2(0, 0));
@@ -89,33 +87,7 @@ namespace FWPGame
             BuildHouse housePower = new BuildHouse(Content.Load<Texture2D>("UI/house_icon"), this, new Vector2(0, 0), new Vector2(0, 0));
             powers.Add(housePower);
 
-            Protect protect = new Protect(Content.Load<Texture2D>("UI/protect"), this, new Vector2(0, 0), new Vector2(0, 0));
-
-            Dictionary<string, Power> myPowers = new Dictionary<string, Power>();
-            myPowers.Add("grass", grassPower);
-            myPowers.Add("sprout", sproutTree);
-            myPowers.Add("fire", fire);
-            myPowers.Add("house", housePower);
-
-            List<Power> availablePowers = new List<Power>();
-            availablePowers.Add(protect);
- */
-
-
-            //Kill the game with Escape
-            GameAction closeGame = new GameAction(this, this.GetType().GetMethod("ExitGame"), new object[0]);
-            InputManager.AddToKeyboardMap(Keys.Escape, closeGame);
-
-            GrowGrass grassPower = new GrowGrass(Content.Load<Texture2D>("UI/sprouts"), this, new Vector2(0, 0), new Vector2(0, 0));
-            powers.Add(grassPower);
-            sproutTree = new SproutTree(Content.Load<Texture2D>("UI/treeicon"), this, new Vector2(0, 0), new Vector2(0, 0));
-            powers.Add(sproutTree);
-            Fire fire = new Fire(Content.Load<Texture2D>("UI/fireicon"), this, new Vector2(0, 0), new Vector2(0, 0));
-            powers.Add(fire);
-            BuildHouse housePower = new BuildHouse(Content.Load<Texture2D>("UI/house_icon"), this, new Vector2(0, 0), new Vector2(0, 0));
-            powers.Add(housePower);
-
-            Protect protect = new Protect(Content.Load<Texture2D>("UI/protect"), this, new Vector2(0, 0), new Vector2(0, 0));
+            //Protect protect = new Protect(Content.Load<Texture2D>("UI/protect"), this, new Vector2(0, 0), new Vector2(0, 0));
 
             Dictionary<string, Power> myPowers = new Dictionary<string, Power>();
             myPowers.Add("grass", grassPower);
@@ -124,14 +96,14 @@ namespace FWPGame
             myPowers.Add("house", housePower);
             
             List<Power> availablePowers = new List<Power>();
-            availablePowers.Add(protect);
+            //availablePowers.Add(protect);
             
 
             cursor = new Cursor(Content.Load<Texture2D>("cursor"), new Vector2(0,0), this, powers);
             player = new Player(Content.Load<Texture2D>("UI/icon"), Content.Load<Texture2D>("UI/iconBG"), chiF, new Vector2(0, 0),
-                new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
-                tempMapSize,
+                new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), tempMapSize,
                 cursor, powers, availablePowers);
+            
 
             map = new Map(Content.Load<Texture2D>("Maps/Mars/marsorbit"),
                 new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
