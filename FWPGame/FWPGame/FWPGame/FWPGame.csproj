@@ -86,6 +86,7 @@
     <Compile Include="Items\Halo.cs" />
     <Compile Include="Items\House.cs" />
     <Compile Include="Items\Tornado.cs" />
+    <Compile Include="Items\WaterSprite.cs" />
     <Compile Include="LoadObjects.cs" />
     <Compile Include="Items\People.cs" />
     <Compile Include="Powers\BuildHouse.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Powers\MakePerson.cs" />
     <Compile Include="Powers\Power.cs" />
     <Compile Include="Powers\Protect.cs" />
+    <Compile Include="Powers\Rain.cs" />
     <Compile Include="Powers\SproutTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

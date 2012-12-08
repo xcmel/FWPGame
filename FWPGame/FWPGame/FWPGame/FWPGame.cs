@@ -30,6 +30,7 @@ namespace FWPGame
         public Map map;
 
         public GrassSprite myGrass;
+        public WaterSprite myWater;
         public Player player;
         private Cursor cursor;
         private Vector2 tempMapSize = new Vector2(1200, 1200);
@@ -74,12 +75,16 @@ namespace FWPGame
 
             myGrass = new GrassSprite(Content.Load<Texture2D>("grass"),
                 new Vector2(0, 0), new Vector2(0, 0));
+            myWater = new WaterSprite(Content.Load<Texture2D>("water"), 
+                new Vector2(0, 0), new Vector2(0, 0));
             //Kill the game with Escape
             GameAction closeGame = new GameAction(this, this.GetType().GetMethod("ExitGame"), new object[0]);
             InputManager.AddToKeyboardMap(Keys.Escape, closeGame);
 
             GrowGrass grassPower = new GrowGrass(Content.Load<Texture2D>("UI/sprouts"), this, new Vector2(0, 0), new Vector2(0, 0));
             powers.Add(grassPower);
+            Rain rainPower = new Rain(Content.Load<Texture2D>("UI/raindrop"), this, new Vector2(0, 0), new Vector2(0, 0));
+            powers.Add(rainPower);
             sproutTree = new SproutTree(Content.Load<Texture2D>("UI/treeicon"), this, new Vector2(0, 0), new Vector2(0, 0));
             powers.Add(sproutTree);
             Fire fire = new Fire(Content.Load<Texture2D>("UI/fireicon"), this, new Vector2(0, 0), new Vector2(0, 0));

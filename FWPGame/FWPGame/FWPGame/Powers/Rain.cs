@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
+using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -10,13 +11,13 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using FWPGame.Engine;
 using FWPGame.Items;
-using System.Collections;
+using System.Reflection;
 
 namespace FWPGame.Powers
 {
-    class GrowGrass : Power
+    class Rain : Power
     {
-        public GrowGrass(Texture2D icon, FWPGame aGame, Vector2 position, Vector2 mapPosition) :
+        public Rain(Texture2D icon, FWPGame aGame, Vector2 position, Vector2 mapPosition) :
             base(icon, aGame, position, mapPosition)
         {
             game = aGame;
@@ -26,13 +27,13 @@ namespace FWPGame.Powers
 
         public override void Interact(MapTile tile)
         {
-            tile.Add(game.myGrass.Clone());            
+            tile.Add(game.myWater.Clone());
         }
+
 
         public override void PowerCombo(Power power2, MouseState mState)
         {
             //not currently implemented
         }
     }
-
 }

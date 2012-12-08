@@ -18,7 +18,6 @@ Content\fire-r.xnb
 Content\fire.xnb
 Content\Wood\logs.xnb
 Content\Tree\tree.xnb
-Content\water.xnb
 Content\House\house.xnb
 Content\House\houseBurnt.xnb
 Content\House\houseFire.xnb
@@ -131,3 +130,5 @@ Content\UI\house_icon.xnb
 Content\UI\iconBG.xnb
 Content\Protect\bubble.xnb
 Content\Sound\mainMusic.xnb
+Content\water.xnb
+Content\UI\raindrop.xnb
