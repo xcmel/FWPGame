@@ -176,7 +176,7 @@ namespace FWPGame.Engine
             #region Power Selection Hotkeys
 
             Keys[] possibleHotkeys = { Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5, Keys.D6, Keys.D7, Keys.D8, Keys.D9, Keys.D0 };
-            for (int i = 0; i < MAX_POWER_HOTKEYS; i++)
+            for (int i = 0; i < myPowers.Count; i++)//MAX_POWER_HOTKEYS; i++)
             {
                 object[] param = new object[1];
                 param[0] = i;
@@ -196,7 +196,7 @@ namespace FWPGame.Engine
 
             GameAction powerRMBClick = new GameAction(
                 this,
-                this.GetType().GetMethod("altUsePower"),
+                this.GetType().GetMethod("clearTile"),
                 new object[0]);
 
             InputManager.AddToMouseMap(InputManager.LEFT_BUTTON, powerLMBClick);
@@ -228,6 +228,16 @@ namespace FWPGame.Engine
             {
                 MapTile tile = myCursor.getTile();
                 mySelectedPower.Interact(tile);
+            }
+        }
+
+        public void clearTile(Vector2 mouseClickPosition)
+        {
+            if (mouseClickPosition.X >= 0 && mouseClickPosition.X < myScreenSize.X
+    && mouseClickPosition.Y > 0 && mouseClickPosition.Y < myScreenSize.Y)
+            {
+                MapTile tile = myCursor.getTile();
+                tile.ClearTile();
             }
         }
 

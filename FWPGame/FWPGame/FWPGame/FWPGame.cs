@@ -188,7 +188,6 @@ namespace FWPGame
             spriteBatch.Begin();
             // TODO: Add your drawing code here
 
-
             map.Draw(spriteBatch);
             player.Draw(spriteBatch);
             cursor.Draw(spriteBatch);

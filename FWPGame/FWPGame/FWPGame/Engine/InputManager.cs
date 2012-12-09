@@ -77,6 +77,22 @@ namespace FWPGame.Engine
                 GameAction action = myMouseMap[LEFT_BUTTON][myMouseMap[LEFT_BUTTON].Count - 1];
                 action.Invoke(parameterList);
             }
+            if (mouseState.LeftButton == ButtonState.Pressed && myMouseMap.ContainsKey(LEFT_BUTTON))
+            {
+                foreach (GameAction a in myMouseMap[LEFT_BUTTON])
+                {
+                    a.Invoke(parameterList);
+                }
+            }
+            if (mouseState.RightButton == ButtonState.Pressed && myMouseMap.ContainsKey(RIGHT_BUTTON))
+            {
+                /*foreach (GameAction a in myMouseMap[LEFT_BUTTON])
+                {
+                    a.Invoke(parameterList);
+                }*/
+                GameAction action = myMouseMap[RIGHT_BUTTON][myMouseMap[RIGHT_BUTTON].Count - 1];
+                action.Invoke(parameterList);
+            }
             if (mouseState.RightButton == ButtonState.Pressed && myMouseMap.ContainsKey(RIGHT_BUTTON))
             {
                 foreach (GameAction a in myMouseMap[RIGHT_BUTTON])
