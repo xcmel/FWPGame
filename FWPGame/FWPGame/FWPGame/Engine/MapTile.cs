@@ -87,5 +87,10 @@ namespace FWPGame.Engine
             s.myScale = myScale;
             mySprites.Add(s);
         }
+
+        public void ClearTile()
+        {
+            mySprites = new List<Sprite>();
+        }
     }
 }
