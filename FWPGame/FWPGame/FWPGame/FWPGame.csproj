@@ -85,11 +85,13 @@
     <Compile Include="Engine\Player.cs" />
     <Compile Include="Items\Halo.cs" />
     <Compile Include="Items\House.cs" />
+    <Compile Include="Items\Road.cs" />
     <Compile Include="Items\Tornado.cs" />
     <Compile Include="Items\WaterSprite.cs" />
     <Compile Include="LoadObjects.cs" />
     <Compile Include="Items\People.cs" />
     <Compile Include="Powers\BuildHouse.cs" />
+    <Compile Include="Powers\BuildRoad.cs" />
     <Compile Include="Powers\Electric.cs" />
     <Compile Include="Powers\Fire.cs" />
     <Compile Include="Powers\GrowGrass.cs" />
